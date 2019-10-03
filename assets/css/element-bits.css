@@ -1,0 +1,308 @@
+/*
+==============================================
+  = Section title
+==============================================
+*/
+.eb-heading {
+  padding: 0;
+  position: relative;
+}
+
+.eb-heading-sep {
+  display: flex;
+  position: relative;
+  margin: 0;
+}
+
+.eb-heading-sep > span {
+  display: block;
+  margin: 0;
+}
+
+.eb-heading-heading {
+  margin: 0;
+  padding: 0;
+}
+
+.eb-heading-subheading {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+==============================================
+  = Wpml lang switch
+==============================================
+*/
+.eb-modal-box {
+  display: none;
+}
+
+.eb-wpml-lang-switch-modal .tingle-modal-box {
+  width: 300px;
+  border: 6px solid #dadada;
+  border-radius: 8px;
+}
+
+@media (min-width: 1200px) {
+  .eb-wpml-lang-switch-modal .tingle-modal-box {
+    width: 300px;
+  }
+}
+
+.eb-wpml-lang-switch-list {
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  list-style: none;
+}
+
+.eb-wpml-lang-switch-list li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #e4e4e4;
+  background: #fff;
+  color: #222;
+  transition: all 0.3s;
+  margin: 0;
+}
+
+.eb-wpml-lang-switch-list li a:hover {
+  background: #f1f1f1;
+}
+
+.eb-wpml-lang-switch-list li {
+  margin: auto;
+}
+
+.eb-lang-switch-handle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 1;
+}
+
+.eb-lang-switch-flag {
+  margin-right: 5px;
+}
+
+.eb-copyright-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eb-copyright-row * {
+  margin: 0;
+  padding: 0;
+}
+
+.eb-wpml-lang-switch-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.eb-wpml-lang-switch-grid .eb-lang-switch-handle {
+  width: 25%;
+  flex-basis: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.eb-wpml-lang-switch-grid .eb-lang-switch-handle img {
+  border-radius: 4px;
+  transition: all 0.3s;
+  box-shadow: 0 14px 24px 0 rgba(50,48,57,.25);
+  margin: 0 10px;
+}
+
+.eb-wpml-lang-switch-grid .eb-lang-switch-handle:hover img {
+  box-shadow: 0 14px 24px 0 rgba(50,48,57,.3);
+  transform: translateY(-2px);
+}
+
+.eb-wpml-lang-switch-grid .eb-lang-switch-handle img.eb-lang-switch-flag-circle {
+  border-radius: 50%;
+}
+
+.eb-lang-switch-modal-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.eb-wpml-lang-switch-list--list_names li a {
+  justify-content: center;
+}
+
+@media only screen and (max-width: 400px) {
+  .eb-wpml-lang-switch-grid .eb-lang-switch-handle {
+    width: 92%;
+    flex-basis: 92%;
+  }
+}
+
+/*
+==============================================
+  = Novel/Site copyright
+==============================================
+*/
+.eb-copyright-col:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.eb-copyright-col:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  text-align: right;
+}
+
+/*
+==============================================
+  = Video modal
+==============================================
+*/
+.eb-video-modal-play-button {
+  display: inline-block;
+  position: relative;
+  align-items: center;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.eb-video-modal-wrap.eb-video-cover--cover .eb-video-modal-play-button-icon,
+.eb-video-modal-wrap.eb-video-cover--custom .eb-video-modal-play-button-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.eb-video-modal-wrap.eb-video-cover--cover .eb-video-modal-play-button-icon > span,
+.eb-video-modal-wrap.eb-video-cover--custom .eb-video-modal-play-button-icon > span {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.eb-video-modal-embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+}
+
+.eb-video-modal-embed-container iframe,
+.eb-video-modal-embed-container object,
+.eb-video-modal-embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.eb-video-modal-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #787878;
+}
+
+.eb-video-modal-embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+}
+
+.eb-video-modal-embed-container iframe,
+.eb-video-modal-embed-container object,
+.eb-video-modal-embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.eb-video-modal-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #787878;
+}
+
+/*
+==============================================
+  = Accordion Menu
+==============================================
+*/
+
+.eb-accordion-wp-menu-list {
+  width: 340px;
+  height: 94vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.eb-accordion-wp-menu-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.eb-accordion-wp-menu-list > .menu {
+  margin-top: 80px;
+}
+
+.eb-accordion-wp-menu-list > .menu .sub-menu {
+  display: none;
+  padding: 10px;
+  background: rgba(221, 221, 221, 0.15);
+}
+
+.eb-accordion-wp-menu-list ul li {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.eb-accordion-wp-menu-list ul.sub-menu li {
+  margin-bottom: 5px;
+}
+
+.eb-accordion-wp-menu-list a {
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.eb-accordion-wp-menu-list .sub-menu a {
+  font-size: 18px;
+  color: #ffebc7;
+}
