@@ -109,6 +109,61 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
             ]
         );
 
+        $this->add_control(
+			'link_color',
+			[
+				'label' => __( 'Link color', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link' => 'color: {{VALUE}}',
+				],
+			]
+        );
+        
+        $this->add_control(
+			'link_color_hover',
+			[
+				'label' => __( 'Link hover color', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:hover' => 'color: {{VALUE}}',
+				],
+			]
+        );
+        
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'link_typography',
+				'label' => __( 'Typography', 'element-bits' ),
+				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link',
+			]
+        );
+        
+        $this->add_control(
+			'link_decor_color',
+			[
+				'label' => __( 'Link hover decor color', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:after' => 'background: {{VALUE}}',
+				],
+			]
+        );
+
         $this->end_controls_section();
 
     }

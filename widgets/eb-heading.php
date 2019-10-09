@@ -353,7 +353,7 @@ class EB_Heading extends EB_Widget_Base {
         $this->add_control(
             'show_sep',
             [
-                'label' => __( 'Show Sepaparator', 'element-bits' ),
+                'label' => __( 'Show Separator', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label_on' => __( 'Show', 'element-bits' ),
                 'label_off' => __( 'Hide', 'element-bits' ),
@@ -452,6 +452,123 @@ class EB_Heading extends EB_Widget_Base {
 
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'sep_icon_section',
+            [
+                'label' => __( 'Icon', 'element-bits' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'show_sep_icon',
+            [
+                'label' => __( 'Show Separator Icon', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __( 'Show', 'element-bits' ),
+                'label_off' => __( 'Hide', 'element-bits' ),
+                'return_value' => 'yes',
+                'default' => '',
+            ]
+        );
+
+		$this->add_control(
+			'sep_icon_pos',
+			[
+				'label' => __( 'Separator Icon Position', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'above_all',
+				'options' => [
+                    'above_all'  => __( 'Above all', 'element-bits' ),
+                    'above_sep_line'  => __( 'Above sep line', 'element-bits' ),
+					'below_all' => __( 'Below all', 'element-bits' ),
+				],
+			]
+		);
+
+		$this->add_control(
+			'sep_icon',
+			[
+				'label' => __( 'Separator Icon?', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-circle',
+					'library' => 'solid',
+				],
+			]
+        );
+
+        $this->add_control(
+            'sep_icon_bg',
+            [
+                'label' => __( 'Icon Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#222',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-heading-sep-icon-wrapper' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+		$this->add_responsive_control(
+			'sep_icon_size',
+			[
+				'label' => __( 'Icon Size', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 360,
+						'step' => 1,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 32,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eb-heading-sep-icon-wrapper' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+        
+        $this->add_responsive_control(
+            'sep_icon_align',
+            [
+                'label' => __( 'Icon Alignment', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'element-bits' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'element-bits' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'element-bits' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-heading-sep-icon-wrapper' => 'text-align: {{VALUE}}',
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
+
     }
 
     /**
@@ -491,6 +608,11 @@ class EB_Heading extends EB_Widget_Base {
         <div class="eb-elementor-widget">
             <div class="eb-heading">
                 <div class="eb-heading-content">
+                    <?php if( $settings['show_sep_icon'] && $settings['sep_icon_pos'] === 'above_all' ) : ?>
+                        <div class="eb-heading-sep-icon-wrapper eb-heading-sep-icon-wrapper-top">
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['sep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                        </div>
+                    <?php endif; ?>
 
                     <?php if( $settings['subheading'] && $settings['subheading_pos'] === 'yes' ) : ?>
                         <div class="eb-heading-subheading">
@@ -508,9 +630,21 @@ class EB_Heading extends EB_Widget_Base {
                         </div>
                     <?php endif; ?>
 
+                    <?php if( $settings['show_sep_icon'] && $settings['sep_icon_pos'] === 'above_sep_line' ) : ?>
+                        <div class="eb-heading-sep-icon-wrapper eb-heading-sep-icon-wrapper-below_sep_line">
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['sep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                        </div>
+                    <?php endif; ?>
+
                     <?php if( $settings['show_sep'] ) : ?>
                         <div class="eb-heading-sep">
                             <span></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if( $settings['show_sep_icon'] && $settings['sep_icon_pos'] === 'below_all' ) : ?>
+                        <div class="eb-heading-sep-icon-wrapper eb-heading-sep-icon-wrapper-below_sep_line">
+                            <?php \Elementor\Icons_Manager::render_icon( $settings['sep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
                         </div>
                     <?php endif; ?>
                 </div>

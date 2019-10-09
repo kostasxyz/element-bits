@@ -11,13 +11,7 @@ defined( 'ABSPATH' ) || exit;
  * @since 1.0
  * @version 1.1
  */
-class EB_Nav_Drawer extends EB_Widget_Base {
-
-    protected $nav_menu_index = 1;
-
-    protected function get_nav_menu_index() {
-        return $this->nav_menu_index++;
-    }
+class EB_Locations_Map extends EB_Widget_Base {
 
     /**
      * Get widget name.
@@ -30,7 +24,7 @@ class EB_Nav_Drawer extends EB_Widget_Base {
      * @return string Widget name.
      */
     public function get_name() {
-        return 'eb-nav-drawer';
+        return 'eb-locations-map';
     }
 
     /**
@@ -44,7 +38,7 @@ class EB_Nav_Drawer extends EB_Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __( 'EB: Nav Drawer', 'element-bits' );
+        return __( 'EB: Loctions Map', 'element-bits' );
     }
 
     /**
@@ -56,7 +50,7 @@ class EB_Nav_Drawer extends EB_Widget_Base {
      * @return array.
      */
     public function get_keywords() {
-        return [ 'novel', 'bits', 'eb', 'mobile', 'nav', 'drawer' ];
+        return [ 'novel', 'bits', 'eb', 'locations', 'map' ];
     }
 
     /**
@@ -67,7 +61,7 @@ class EB_Nav_Drawer extends EB_Widget_Base {
      * @return array Widget scripts dependencies.
      */
     public function get_script_depends() {
-        return [ 'eb-nav-drawer' ];
+        return [ 'eb-locations-map' ];
     }
 
     /**
@@ -78,7 +72,7 @@ class EB_Nav_Drawer extends EB_Widget_Base {
      * @return array Widget scripts dependencies.
      */
     public function get_style_depends() {
-        return [ 'eb-nav-drawer' ];
+        return [ 'eb-locations-map' ];
     }
 
     /**
@@ -113,21 +107,6 @@ class EB_Nav_Drawer extends EB_Widget_Base {
                 'label' => __( 'Content', 'element-bits' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
-        );
-
-        $this->add_control(
-			'drawer_color',
-			[
-				'label' => __( 'Drawer Background color', 'element-bits' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .eb-mobile-nav-wrap' => 'background-color: {{VALUE}}',
-				],
-			]
         );
 
         $this->add_control(
@@ -206,7 +185,7 @@ class EB_Nav_Drawer extends EB_Widget_Base {
 		$this->add_control(
 			'menu_tpl_id',
 			[
-				'label' => __( 'Dropdown Menu Template', 'element-bits' ),
+				'label' => __( 'Template', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'multiple' => false,
 				'options' => $this->get_templates(),
