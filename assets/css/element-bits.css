@@ -313,3 +313,179 @@
   font-size: 18px;
   color: #ffebc7;
 }
+
+/*
+==============================================
+  = Novi Gallery
+==============================================
+*/
+.eb-novi-gallery-tabs {
+  margin: 20px 0;
+  border-bottom: 2px solid #eee;
+}
+
+.eb-novi-gallery-tabs button:active,
+.eb-novi-gallery-tabs button:focus,
+.eb-novi-gallery-tabs button:visited {
+  outline: none;
+}
+
+.eb-novi-gallery-tabs button {
+  background: none;
+  border: none;
+  padding: 2px 14px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 760px) {
+  .eb-novi-gallery-tabs button {
+    margin-bottom: 22px;
+  }
+}
+
+.eb-novi-gallery-tabs button:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: transparent;
+  transform: translateY(4px);
+  transition: all 0.3s;
+}
+
+.eb-novi-gallery-tabs button.eb-active:after {
+  background-color: #94743e;
+}
+
+.eb-novi-gallery-wrapper {
+  margin: 0 auto;
+  position: relative;
+}
+
+.eb-novi-gallery-slick figure {
+  cursor: pointer;
+}
+
+.eb-loading-wrapper {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: #f8f9f9;
+}
+
+.eb-loading {
+  min-height: 4rem;
+  pointer-events: none;
+  position: relative;
+}
+
+.eb-loading::after {
+  animation: eb_loading .5s infinite linear;
+  border: .1rem solid #5755d9;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  height: 4.6rem;
+  margin-left: -2.3rem;
+  margin-top: -2.3rem;
+  width: 4.6rem;
+}
+
+@keyframes eb_loading {
+  0% {
+    transform: rotate(0)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+/*
+==============================================
+  = Vertical sep
+==============================================
+*/
+.eb-vertical-sep-wrapper {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+/*
+====================================
+  = Whapi offers shortcode
+====================================
+*/
+.ntr-whapi-offer-grid {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+}
+
+.ntr-whapi-offer-grid:nth-child(even) {
+  grid-template-columns: 6fr 7fr;
+}
+
+.ntr-whapi-offer {
+  margin-bottom: 40px;
+  padding-top: 40px;
+}
+
+.ntr-whapi-offer-grid .ntr-whapi-offer-img {
+  overflow: hidden;
+}
+
+.ntr-whapi-offer-grid .ntr-whapi-offer-img a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+}
+
+.ntr-whapi-offer-grid .ntr-whapi-offer-info {
+  padding: 40px;
+}
+
+.ntr-whapi-offer-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.ntr-whapi-offer-footer {
+  margin-top: 15px;
+}
+
+.ntr-whapi-offer-footer .ntr-whapi-offer-book-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 2px solid #222;
+  color: #eee;
+  background: #222;
+}
+
+.ntr-whapi-offer-meta-wrap {
+  margin-top: 20px;
+}
+
+.offer-price-wrap {
+  margin-top: 20px;
+}
+
+.ntr-whapi-offer-price {
+  font-size: 22px;
+  font-weight: 600;
+}

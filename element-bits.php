@@ -82,6 +82,10 @@ function element_bits_init() {
         require ELBITS_PATH . 'widgets/eb-heading.php';
         require ELBITS_PATH . 'widgets/eb-nav-drawer.php';
         require ELBITS_PATH . 'widgets/eb-accordion-menu.php';
+        require ELBITS_PATH . 'widgets/eb-novi-gallery.php';
+        require ELBITS_PATH . 'widgets/eb-wpml-lang-switch.php';
+        require ELBITS_PATH . 'widgets/eb-vertical-sep.php';
+        require ELBITS_PATH . 'widgets/eb-whapi-offers.php';
     } );
 
     // Register widgets
@@ -89,6 +93,10 @@ function element_bits_init() {
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Heading() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Nav_Drawer() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Accordion_Wp_Menu() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Novi_Gallery() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Wpml_Lang_Switch() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Vertical_Sep() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Whapi_Offers() );
     } );
 
     // Front end scripts/styles
@@ -101,6 +109,9 @@ function element_bits_init() {
         wp_register_script( 'eb-nav-drawer', ELBITS_URL . 'assets/js/eb-nav-drawer.js', [], ELBITS_VERSION);
 
         wp_register_script( 'eb-accordion-menu', ELBITS_URL . 'assets/js/eb-accordion-menu.js', [], ELBITS_VERSION);
+
+        wp_register_script( 'eb-novi-gallery', ELBITS_URL . 'assets/js/eb-novi-gallery.js', [], ELBITS_VERSION);
+        wp_register_script( 'eb-wp,l-lang-switch', ELBITS_URL . 'assets/js/eb-wp,l-lang-switch.js', [], ELBITS_VERSION);
     } );
 
     // Preview styles
