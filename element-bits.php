@@ -86,6 +86,7 @@ function element_bits_init() {
         require ELBITS_PATH . 'widgets/eb-wpml-lang-switch.php';
         require ELBITS_PATH . 'widgets/eb-vertical-sep.php';
         require ELBITS_PATH . 'widgets/eb-whapi-offers.php';
+        require ELBITS_PATH . 'widgets/eb-wh-datepicker.php';
     } );
 
     // Register widgets
@@ -97,10 +98,16 @@ function element_bits_init() {
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Wpml_Lang_Switch() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Vertical_Sep() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Whapi_Offers() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_WH_Datepicker() );
     } );
 
     // Front end scripts/styles
     add_action( 'wp_enqueue_scripts', function() {
+        wp_enqueue_style( 'pickadate', ELBITS_URL . 'assets/vendor/pickadate/lib/compressed/themes/default.css', [], ELBITS_VERSION );
+        wp_enqueue_style( 'pickadate-date', ELBITS_URL . 'assets/vendor/pickadate/lib/compressed/themes/default.date.css', [], ELBITS_VERSION );
+        wp_enqueue_script( 'pickadate', ELBITS_URL . 'assets/vendor/pickadate/lib/compressed/picker.js', [ 'jquery' ], ELBITS_VERSION, true );
+        wp_enqueue_script( 'pickadate-date', ELBITS_URL . 'assets/vendor/pickadate/lib/compressed/picker.date.js', [ 'jquery' ], ELBITS_VERSION, true );
+
 		wp_enqueue_style( 'element-bits', ELBITS_URL . 'assets/css/element-bits.css', [], ELBITS_VERSION );
         wp_enqueue_script( 'element-bits', ELBITS_URL . 'assets/js/element-bits.js', [ 'jquery' ], ELBITS_VERSION, true );
         

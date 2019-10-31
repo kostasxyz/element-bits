@@ -489,3 +489,134 @@
   font-size: 22px;
   font-weight: 600;
 }
+
+/*
+==============================================
+  = WH Datepicker
+==============================================
+*/
+.eb-datepicker-field > button {
+  display: block;
+  background: none;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0 16px;
+  color: #222;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.eb-datepicker-field > button:after {
+  content: "";
+  width: 1px;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  right: 0;
+  background: #ddd;
+}
+
+.eb-datepicker-field > button:hover {
+  background: #f9f9f9;
+}
+
+.eb-datepicker-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: 1px solid #ddd;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.eb-datepicker-book-btn {
+  display: block;
+  text-decoration: none!important;
+  text-align: center;
+  height: 100%;
+  background: #a6965e;
+  color: #fff;
+  line-height: 3;
+}
+
+.eb-datepicker-field-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eb-datepicker-field-label,
+.eb-datepicker-field-icon {
+  font-weight: 300;
+  font-size: 14px;
+  color: #818181;
+}
+
+.eb-datepicker-field-date-text {
+  font-size: 24px;
+  margin: auto 10px;
+}
+
+.eb-number-field {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 10px;
+}
+
+.eb-number-field-sub {
+  text-align: right;
+}
+
+.eb-number-field-num {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin: auto 10px;
+}
+
+.eb-number-field-sub,
+.eb-number-field-add {
+  cursor: pointer;
+}
+
+.picker__table td,
+.picker__table th {
+  border: 1px solid #ececec;
+}
+
+.eb-datepicker-wrapper [class*="picker__button--"] {
+  border-radius: 0;
+  color: #444;
+}
+
+.eb-datepicker-wrapper .picker__button--clear:focus, 
+.eb-datepicker-wrapper .picker__button--close:focus, 
+.eb-datepicker-wrapper .picker__button--today:focus {
+  background: #444;
+  border-color: #444;
+  outline: 0;
+}
+
+.eb-datepicker-wrapper .picker__button--clear:hover,
+.eb-datepicker-wrapper .picker__button--close:hover, 
+.eb-datepicker-wrapper .picker__button--today:hover {
+  cursor: pointer;
+  color: #000;
+  background: #eee;
+  border-bottom-color: #eee;
+}
+
+.eb-datepicker-wrapper .picker__button--today:before {
+  border-top: .66em solid #000;
+}
+
+.eb-datepicker-wrapper .picker__button--clear:before {
+  border-top: 3px solid #000;
+}
+
+.eb-datepicker-field-guests .eb-datepicker-field-inner {
+  height: 100%;
+}
