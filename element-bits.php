@@ -27,9 +27,9 @@ defined( 'ABSPATH' ) || exit;
 
 
 
-add_action( 'plugins_loaded', 'element_bits_init' );
+add_action( 'plugins_loaded', 'elbits_init' );
 
-function element_bits_init() {
+function elbits_init() {
 
     // Plugin paths/uri
     define( 'ELBITS_VERSION', '1.0.0' );
@@ -41,12 +41,12 @@ function element_bits_init() {
 		add_action( 'admin_notices', function() {
             $message   = esc_html__( 'Element Bits requires the Elementor page builder to be active. Please activate Elementor to continue.', 'element-bits' );
             $html      = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
-            echo wp_kses_post( $html );  
+            echo wp_kses_post( $html );
         } );
 
 		return;
     }
-    
+
     // PHP version check
     if ( ! version_compare( PHP_VERSION, '7', '>=' ) ) {
 		add_action( 'admin_notices', function() {
@@ -58,13 +58,16 @@ function element_bits_init() {
 		return;
     }
 
-    // TODO: search for official elementor hook for breakpoints
+    // TODO: search for official elementor hook for breakpoints,
+    // add to elebits settings api
     @update_option( 'elementor_container_width', 1280 );
     @update_option( 'elementor_viewport_lg', 1366 );
     @update_option( 'elementor_viewport_md', 1024 );
     @update_option( 'elementor_disable_color_schemes', 'yes' );
     @update_option( 'elementor_disable_typography_schemes', 'yes' );
-    
+
+    require ELBITS_PATH . 'inc/functions.php';
+
     // Add widgets
     add_action( 'elementor/init', function() {
 
@@ -108,9 +111,11 @@ function element_bits_init() {
         wp_enqueue_script( 'pickadate', ELBITS_URL . 'assets/vendor/pickadate/picker.js', [ 'jquery' ], ELBITS_VERSION, true );
         wp_enqueue_script( 'pickadate-date', ELBITS_URL . 'assets/vendor/pickadate/picker.date.js', [ 'jquery' ], ELBITS_VERSION, true );
 
+        wp_enqueue_script( 'elbits-wh-datepicker', ELBITS_URL . 'assets/js/eb-wh-datepicker.js', [ 'jquery' ], ELBITS_VERSION, true );
+
 		wp_enqueue_style( 'element-bits', ELBITS_URL . 'assets/css/element-bits.css', [], ELBITS_VERSION );
         wp_enqueue_script( 'element-bits', ELBITS_URL . 'assets/js/element-bits.js', [ 'jquery' ], ELBITS_VERSION, true );
-        
+
         // eb-nav-drawer
         wp_register_style( 'eb-nav-drawer', ELBITS_URL . 'assets/css/eb-nav-drawer.css', [], ELBITS_VERSION);
         wp_register_script( 'eb-nav-drawer', ELBITS_URL . 'assets/js/eb-nav-drawer.js', [], ELBITS_VERSION);
@@ -118,7 +123,7 @@ function element_bits_init() {
         wp_register_script( 'eb-accordion-menu', ELBITS_URL . 'assets/js/eb-accordion-menu.js', [], ELBITS_VERSION);
 
         wp_register_script( 'eb-novi-gallery', ELBITS_URL . 'assets/js/eb-novi-gallery.js', [], ELBITS_VERSION);
-        wp_register_script( 'eb-wp,l-lang-switch', ELBITS_URL . 'assets/js/eb-wp,l-lang-switch.js', [], ELBITS_VERSION);
+        wp_register_script( 'eb-wpml-lang-switch', ELBITS_URL . 'assets/js/eb-wpml-lang-switch.js', [], ELBITS_VERSION);
     } );
 
     // Preview styles

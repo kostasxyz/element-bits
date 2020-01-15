@@ -80,9 +80,12 @@ class EB_Whapi_Offers extends EB_Widget_Base {
     public function fetch_offers() {
         $settings = $this->get_settings_for_display();
 
-        if( $settings['url'] != '' && $settings['user'] != '' && $settings['key'] != '' && $settings['dummy'] != 'yes' ) {
-            //FAROSAYIA:6B4A84CF84FA310D84B72F3A28D38C06948CCDCE
-            //https://rest.reserve-online.net/offers/FAROSAYIA
+        if(
+            $settings['property_code'] != '' &&
+            $settings['user'] != '' &&
+            $settings['key'] != '' &&
+            $settings['dummy'] != 'yes' )
+        {
             $args = array(
                 'headers' => array(
                     'Authorization' => 'Basic ' . base64_encode( esc_attr( $settings['user'] ).':'.esc_attr( $settings['key'] ) ),
@@ -91,7 +94,9 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                 )
             );
 
-            $response = wp_remote_request( $settings['url'], $args );
+            $offers_api_url = esc_url( 'https://rest.reserve-online.net/offers/' . $settings['property_code'] );
+
+            $response = wp_remote_request( $offers_api_url, $args );
 
             if ( is_wp_error( $response ) ) {
                 return  false;
@@ -117,13 +122,13 @@ class EB_Whapi_Offers extends EB_Widget_Base {
     private function dummy_offers() {
         $offer = new \stdClass();
         $offer->id = 123;
-        $offer->name = 'Easter 3 day & 4 day Packages 2019 | Save up to 25%';
-        $offer->fromd = '2019-04-26';
-        $offer->tod = '2019-04-30';
-        $offer->active_tod = '2019-04-30';
-        $offer->active_fromd = '2019-03-21';
-        $offer->description = 'Book Easter 2019 with Hotel and Save up to 25%. PLUS Traditional Easter Meals, Festivities, Free Room Upgrades and Late Check-out all included. Book Now.';
-        $offer->min_price = '105.31';
+        $offer->name = 'Sample offer 20% off | Please enter WebHotelier API keys';
+        $offer->fromd = '2029-01-01';
+        $offer->tod = '2029-12-31';
+        $offer->active_tod = '2029-01-01';
+        $offer->active_fromd = '2029-12-31';
+        $offer->description = 'Please enter WebHotelier API keys. Book now and Save up to 25%. PLUS Meals, Festivities, Free Room Upgrades and Late Check-out all included. Book Now.';
+        $offer->min_price = '199.88';
         $offer->currency = 'EUR';
         $offer->min_stay = 3;
         $offer->board_id = 19;
@@ -214,13 +219,25 @@ class EB_Whapi_Offers extends EB_Widget_Base {
         );
 
         $this->add_control(
-            'url',
+            'property_code',
             [
-                'label' => __( 'Url', 'element-bits' ),
+                'label' => __( 'Property Code', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => __( '', 'element-bits' ),
                 'condition'    => [
                     'dummy' => '',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'book_engine_url',
+            [
+                'label' => __( 'WH Book Url', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( '', 'element-bits' ),
+                'condition'    => [
+                    'dummy' => 'myhotel.reserve-online.net',
                 ],
             ]
         );

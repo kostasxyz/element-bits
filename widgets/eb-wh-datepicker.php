@@ -76,10 +76,10 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Book url', 'plugin-domain' ),
 				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => __( 'https://...', 'element-bits' ),
+				'placeholder' => __( 'https://myhotel.reserve-online.net', 'element-bits' ),
 				'show_external' => true,
 				'default' => [
-					'url' => '',
+					'url' => 'https://myhotel.reserve-online.net',
 					'is_external' => true,
 					'nofollow' => true,
 				],
@@ -114,8 +114,12 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                 'target'  => $settings['book_url']['is_external'] ? '_bank' : '_self',
             ]
         );
+
+        $w_data = [
+            'book_url' => $settings['book_url']['url'],
+        ];
         ?>
-            <div class="eb-datepicker-wrapper">
+            <div class="eb-datepicker-wrapper" data-elbits='<?php echo json_encode( $w_data ); ?>'>
                 <div class="eb-datepicker-container">
                     <div class="eb-datepicker-field eb-datepicker-field-checkin">
                         <button>
@@ -178,8 +182,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 
     public function calendar_icon($width = '14px', $fill = '#444') {
         return '
-            <svg 
-                version="1.1" id="eb-icon-calendar" xmlns="http://www.w3.org/2000/svg" 
+            <svg
+                version="1.1" id="eb-icon-calendar" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 425 425" xml:space="preserve" width="'.$width.'" fill="'.$fill.'">
             <g>

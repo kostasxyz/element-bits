@@ -427,13 +427,16 @@
   = Whapi offers shortcode
 ====================================
 */
-.ntr-whapi-offer-grid {
-  display: grid;
-  grid-template-columns: 4fr 6fr;
-}
 
-.ntr-whapi-offer-grid:nth-child(even) {
-  grid-template-columns: 6fr 7fr;
+@media (min-width: 1024px) {
+  .ntr-whapi-offer-grid {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+  }
+  
+  .ntr-whapi-offer-grid:nth-child(even) {
+    grid-template-columns: 6fr 7fr;
+  }
 }
 
 .ntr-whapi-offer {
@@ -488,6 +491,16 @@
 .ntr-whapi-offer-price {
   font-size: 22px;
   font-weight: 600;
+}
+
+@media (max-width: 1023px) {
+  .ntr-whapi-offer-grid .ntr-whapi-offer-img {
+    height: 41vh;
+  }
+
+  .ntr-whapi-offer-grid .ntr-whapi-offer-info {
+    padding: 20px;
+  }
 }
 
 /*
