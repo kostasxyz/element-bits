@@ -74,7 +74,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 		$this->add_control(
 			'book_url',
 			[
-				'label' => __( 'Book url', 'plugin-domain' ),
+				'label' => __( 'Book url', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'placeholder' => __( 'https://myhotel.reserve-online.net', 'element-bits' ),
 				'show_external' => true,
@@ -84,10 +84,42 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 					'nofollow' => true,
 				],
 			]
+        );
+        
+		$this->add_control(
+			'calendar_icon',
+			[
+				'label' => __( 'Calendar Icon', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-calendar',
+					'library' => 'solid',
+				],
+			]
 		);
 
         $this->end_controls_section();
+    }
 
+    private function render_icon( $icon ) {
+        $settings = $this->get_settings_for_display();
+
+        if ( ! isset( $settings['calendar_icon']['value']['id'] ) ) {
+			return '';
+        }
+
+        if ( strpos( $id, '.svg' ) !== false ) {
+            $attachment_file = get_attached_file( $settings['calendar_icon']['value']['id'] );
+            $svg = file_get_contents( $attachment_file );   
+            $svg = preg_replace('#\s(id|class|style)="[^"]+"#', ' ', $svg);
+            $svg = str_replace('<svg', '<svg class="eb-wh-datepicker-icon"', $svg);
+            echo $svg;
+        }
+        else {
+            return '<img src="' . esc_url( $settings['calendar_icon']['value']['url'] ) . '"/>';
+        }
+        
+        
     }
 
     /**
@@ -130,7 +162,9 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                                     &nbsp;
                                     <?php echo $checkin[1]; ?>
                                 </span>
-                                <span class="eb-datepicker-field-icon">^</span>
+                                <span class="eb-datepicker-field-icon">
+                                    <?php echo $this->calendar_icon(); ?>
+                                </span>
                             </div>
                         </button>
                     </div>
