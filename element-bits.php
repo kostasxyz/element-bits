@@ -29,6 +29,11 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'plugins_loaded', 'elbits_init' );
 
+/**
+ * Element bits
+ * 
+ * @todo Add novel signature svg in dynamic tag
+ */
 function elbits_init() {
 
     // Plugin paths/uri
@@ -83,9 +88,7 @@ function elbits_init() {
         // Include widgets
         require ELBITS_PATH . 'widgets/eb-widget-base.php';
         require ELBITS_PATH . 'widgets/eb-heading.php';
-        require ELBITS_PATH . 'widgets/eb-nav-drawer.php';
         require ELBITS_PATH . 'widgets/eb-accordion-menu.php';
-        require ELBITS_PATH . 'widgets/eb-novi-gallery.php';
         require ELBITS_PATH . 'widgets/eb-wpml-lang-switch.php';
         require ELBITS_PATH . 'widgets/eb-vertical-sep.php';
         require ELBITS_PATH . 'widgets/eb-whapi-offers.php';
@@ -95,9 +98,7 @@ function elbits_init() {
     // Register widgets
     add_action( 'elementor/widgets/widgets_registered', function ( $widgets_manager ) {
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Heading() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Nav_Drawer() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Accordion_Wp_Menu() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Novi_Gallery() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Wpml_Lang_Switch() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Vertical_Sep() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Whapi_Offers() );
@@ -115,10 +116,6 @@ function elbits_init() {
 
 		wp_enqueue_style( 'element-bits', ELBITS_URL . 'assets/css/element-bits.css', [], ELBITS_VERSION );
         wp_enqueue_script( 'element-bits', ELBITS_URL . 'assets/js/element-bits.js', [ 'jquery' ], ELBITS_VERSION, true );
-
-        // eb-nav-drawer
-        wp_register_style( 'eb-nav-drawer', ELBITS_URL . 'assets/css/eb-nav-drawer.css', [], ELBITS_VERSION);
-        wp_register_script( 'eb-nav-drawer', ELBITS_URL . 'assets/js/eb-nav-drawer.js', [], ELBITS_VERSION);
 
         wp_register_script( 'eb-accordion-menu', ELBITS_URL . 'assets/js/eb-accordion-menu.js', [], ELBITS_VERSION);
 

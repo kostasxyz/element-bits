@@ -10,6 +10,7 @@ defined( 'ABSPATH' ) || exit;
  * @author Kostas Charalampidis <skapator@gmail.com>
  * @since 1.0
  * @version 1.1
+ * @todo refactor pickadate.js with flatpicker.js
  */
 class EB_WH_Datepicker extends EB_Widget_Base {
 
@@ -101,6 +102,11 @@ class EB_WH_Datepicker extends EB_Widget_Base {
         $this->end_controls_section();
     }
 
+    /**
+     * Render icon
+     * 
+     * @todo Check for svg or png, add style controls
+     */
     private function render_icon( $icon ) {
         $settings = $this->get_settings_for_display();
 

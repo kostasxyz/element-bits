@@ -169,96 +169,6 @@
 
 /*
 ==============================================
-  = Video modal
-==============================================
-*/
-.eb-video-modal-play-button {
-  display: inline-block;
-  position: relative;
-  align-items: center;
-  background: none;
-  padding: 0;
-  margin: 0;
-  border: none;
-  cursor: pointer;
-}
-
-.eb-video-modal-wrap.eb-video-cover--cover .eb-video-modal-play-button-icon,
-.eb-video-modal-wrap.eb-video-cover--custom .eb-video-modal-play-button-icon {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-}
-
-.eb-video-modal-wrap.eb-video-cover--cover .eb-video-modal-play-button-icon > span,
-.eb-video-modal-wrap.eb-video-cover--custom .eb-video-modal-play-button-icon > span {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.eb-video-modal-embed-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-  height: auto;
-}
-
-.eb-video-modal-embed-container iframe,
-.eb-video-modal-embed-container object,
-.eb-video-modal-embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-
-.eb-video-modal-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #787878;
-}
-
-.eb-video-modal-embed-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-  height: auto;
-}
-
-.eb-video-modal-embed-container iframe,
-.eb-video-modal-embed-container object,
-.eb-video-modal-embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-
-.eb-video-modal-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #787878;
-}
-
-/*
-==============================================
   = Accordion Menu
 ==============================================
 */
@@ -316,103 +226,6 @@
 
 /*
 ==============================================
-  = Novi Gallery
-==============================================
-*/
-.eb-novi-gallery-tabs {
-  margin: 20px 0;
-  border-bottom: 2px solid #eee;
-}
-
-.eb-novi-gallery-tabs button:active,
-.eb-novi-gallery-tabs button:focus,
-.eb-novi-gallery-tabs button:visited {
-  outline: none;
-}
-
-.eb-novi-gallery-tabs button {
-  background: none;
-  border: none;
-  padding: 2px 14px;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 760px) {
-  .eb-novi-gallery-tabs button {
-    margin-bottom: 22px;
-  }
-}
-
-.eb-novi-gallery-tabs button:after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 4px;
-  background-color: transparent;
-  transform: translateY(4px);
-  transition: all 0.3s;
-}
-
-.eb-novi-gallery-tabs button.eb-active:after {
-  background-color: #94743e;
-}
-
-.eb-novi-gallery-wrapper {
-  margin: 0 auto;
-  position: relative;
-}
-
-.eb-novi-gallery-slick figure {
-  cursor: pointer;
-}
-
-.eb-loading-wrapper {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 90%;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  background: #f8f9f9;
-}
-
-.eb-loading {
-  min-height: 4rem;
-  pointer-events: none;
-  position: relative;
-}
-
-.eb-loading::after {
-  animation: eb_loading .5s infinite linear;
-  border: .1rem solid #5755d9;
-  border-radius: 50%;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  content: "";
-  display: block;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-  height: 4.6rem;
-  margin-left: -2.3rem;
-  margin-top: -2.3rem;
-  width: 4.6rem;
-}
-
-@keyframes eb_loading {
-  0% {
-    transform: rotate(0)
-  }
-
-  100% {
-    transform: rotate(360deg)
-  }
-}
-
-/*
-==============================================
   = Vertical sep
 ==============================================
 */
@@ -424,7 +237,7 @@
 
 /*
 ====================================
-  = Whapi offers shortcode
+  = Whapi offers
 ====================================
 */
 

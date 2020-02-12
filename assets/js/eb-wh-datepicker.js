@@ -1,9 +1,4 @@
 ;(function($){
-
-  function optChain(val) {
-
-  }
-
   var ebDatepickerWidget = function( $scope, $ ) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var wrapper           = $scope.find('.eb-datepicker-wrapper');
