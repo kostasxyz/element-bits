@@ -246,7 +246,7 @@
     display: grid;
     grid-template-columns: 4fr 6fr;
   }
-  
+
   .ntr-whapi-offer-grid:nth-child(even) {
     grid-template-columns: 6fr 7fr;
   }
@@ -281,6 +281,10 @@
   font-weight: 600;
 }
 
+.ntr-whapi-offer-title a {
+  transition: all 0.3s;
+}
+
 .ntr-whapi-offer-footer {
   margin-top: 15px;
 }
@@ -288,7 +292,6 @@
 .ntr-whapi-offer-footer .ntr-whapi-offer-book-btn {
   display: inline-block;
   padding: 10px 24px;
-  border: 2px solid #222;
   color: #eee;
   background: #222;
 }
@@ -420,8 +423,8 @@
   color: #444;
 }
 
-.eb-datepicker-wrapper .picker__button--clear:focus, 
-.eb-datepicker-wrapper .picker__button--close:focus, 
+.eb-datepicker-wrapper .picker__button--clear:focus,
+.eb-datepicker-wrapper .picker__button--close:focus,
 .eb-datepicker-wrapper .picker__button--today:focus {
   background: #444;
   border-color: #444;
@@ -429,7 +432,7 @@
 }
 
 .eb-datepicker-wrapper .picker__button--clear:hover,
-.eb-datepicker-wrapper .picker__button--close:hover, 
+.eb-datepicker-wrapper .picker__button--close:hover,
 .eb-datepicker-wrapper .picker__button--today:hover {
   cursor: pointer;
   color: #000;
