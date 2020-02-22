@@ -55,6 +55,29 @@ class EB_WH_Datepicker extends EB_Widget_Base {
     }
 
     /**
+     * Used to set scripts dependencies required to run the widget.
+     *
+     * @access public
+     *
+     * @return array Widget scripts dependencies.
+     * @todo decouple css
+     */
+    public function get_style_depends() {
+        return [ 'flatpickr', 'flatpickr-theme' ];
+    }
+
+    /**
+     * Used to set scripts dependencies required to run the widget.
+     *
+     * @access public
+     *
+     * @return array Widget scripts dependencies.
+     */
+    public function get_script_depends() {
+        return [ 'eb-wh-datepicker', 'flatpickr' ];
+    }
+
+    /**
      * Register oEmbed widget controls.
      *
      * Adds different input fields to allow the user to change and customize the widget settings.
@@ -86,7 +109,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				],
 			]
         );
-        
+
 		$this->add_control(
 			'calendar_icon',
 			[
@@ -104,7 +127,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 
     /**
      * Render icon
-     * 
+     *
      * @todo Check for svg or png, add style controls
      */
     private function render_icon( $icon ) {
@@ -116,7 +139,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 
         if ( strpos( $id, '.svg' ) !== false ) {
             $attachment_file = get_attached_file( $settings['calendar_icon']['value']['id'] );
-            $svg = file_get_contents( $attachment_file );   
+            $svg = file_get_contents( $attachment_file );
             $svg = preg_replace('#\s(id|class|style)="[^"]+"#', ' ', $svg);
             $svg = str_replace('<svg', '<svg class="eb-wh-datepicker-icon"', $svg);
             echo $svg;
@@ -124,8 +147,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
         else {
             return '<img src="' . esc_url( $settings['calendar_icon']['value']['url'] ) . '"/>';
         }
-        
-        
+
+
     }
 
     /**
@@ -163,7 +186,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                         <button>
                             <div class="eb-datepicker-field-inner">
                                 <span class="eb-datepicker-field-label">CHECKIN</span>
-                                <span class="eb-datepicker-field-date-text">
+                                <span class="eb-datepicker-field-display">
                                     <?php echo $checkin[0]; ?>
                                     &nbsp;
                                     <?php echo $checkin[1]; ?>
@@ -179,7 +202,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                         <button>
                             <div class="eb-datepicker-field-inner">
                                 <span class="eb-datepicker-field-label">CHECKOUT</span>
-                                <span class="eb-datepicker-field-date-text">
+                                <span class="eb-datepicker-field-display">
                                     <?php echo $checkout[0]; ?>
                                     &nbsp;
                                     <?php echo $checkout[1]; ?>

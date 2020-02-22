@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
  * @author Kostas Charalampidis <skapator@gmail.com>
  * @since 1.0
  * @version 1.1
- * @todo Refactor, implement ajax refresh offers
+ * @todo Refactor, implement ajax refresh offers, refactor css class names
  */
 class EB_Whapi_Offers extends EB_Widget_Base {
 
