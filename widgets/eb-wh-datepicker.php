@@ -109,20 +109,319 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				],
 			]
         );
-
+        
 		$this->add_control(
-			'calendar_icon',
+			'cal_icon',
 			[
 				'label' => __( 'Calendar Icon', 'element-bits' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
+				'type' => \Elementor\Controls_Manager::MEDIA,
 				'default' => [
-					'value' => 'fas fa-calendar',
-					'library' => 'solid',
+					'url' => ELBITS_PATH . 'assets/svg/calendar.svg',
 				],
+			]
+        );
+
+        $this->end_controls_section();
+
+        //----------------------------------------------
+        // Wrap style
+
+		$this->start_controls_section(
+			'wrap_style',
+			[
+				'label' => __( 'Container', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+        
+		$this->add_control(
+			'height',
+			[
+				'label' => __( 'Widget Height', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 30,
+				'max' => 1000,
+				'step' => 1,
+				'default' => 60,
+			]
+        );
+
+		$this->add_control(
+			'wrap_border_width',
+			[
+				'label' => __( 'Border width', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 80,
+				'step' => 1,
+                'default' => 1,
+                'selectors' => [
+					'{{WRAPPER}} .eb-datepicker-container' => 'border: {{VALUE}}px solid;',
+				],
+			]
+        );
+
+		$this->add_control(
+			'wrap_border_color',
+			[
+				'label' => __( 'Border color', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#ddd',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-datepicker-container' => 'border-color: {{VALUE}}',
+                    '{{WRAPPER}} .eb-datepicker-field > button:after' => 'background-color: {{VALUE}}',
+                ]
+			]
+        );
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'wrap_box_shadow',
+				'label' => __( 'Box Shadow', 'plugin-domain' ),
+				'selector' => '{{WRAPPER}} .eb-datepicker-container',
+			]
+		);
+                
+        $this->end_controls_section();
+
+        //----------------------------------------------------
+        // Labels date styles
+		$this->start_controls_section(
+			'label_style',
+			[
+				'label' => __( 'Label', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+		$this->add_control(
+			'label_color',
+			[
+				'label' => __( 'Label Color', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#444',
+                'selectors' => [
+					'{{WRAPPER}} .eb-datepicker-field-label' => 'color: {{VALUE}}',
+				],
+			]
+        );
+        
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'label_typography',
+				'label' => __( 'Typography', 'element-bits' ),
+				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-datepicker-field-label',
 			]
 		);
 
         $this->end_controls_section();
+
+        //----------------------------------------------------
+        // Display date styles
+		$this->start_controls_section(
+			'date_style',
+			[
+				'label' => __( 'Date', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+		$this->add_control(
+			'date_colors',
+			[
+				'label' => __( 'Date Color', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#444',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-datepicker-field-display-typo' => 'color: {{VALUE}}',
+                ]
+			]
+        );
+        
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'date_typography',
+				'label' => __( 'Typography', 'element-bits' ),
+				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-datepicker-field-display-typo' 
+			]
+        );
+        
+		$this->add_control(
+			'date_v_pos',
+			[
+				'label' => __( 'Date Vertical posistion', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => -30,
+				'max' => 30,
+				'step' => 1,
+                'default' => -3,
+                'selectors' => [
+                    '{{WRAPPER}} .eb-datepicker-field-display' => 'transform: translateY({{VALUE}}px)'
+                ]
+			]
+        );
+
+        $this->end_controls_section();
+
+        //----------------------------------------------
+        // Icon style
+
+		$this->start_controls_section(
+			'cal_style',
+			[
+				'label' => __( 'Icon', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+        
+
+		$this->add_control(
+			'cal_color',
+			[
+				'label' => __( 'Icon Color', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#999',
+			]
+		);
+        
+		$this->add_control(
+			'cal_height',
+			[
+				'label' => __( 'Icon height', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 80,
+				'step' => 1,
+				'default' => 16,
+			]
+        );
+
+        $this->end_controls_section();
+
+        //----------------------------------------------
+        // Button style
+
+		$this->start_controls_section(
+			'btn_style',
+			[
+				'label' => __( 'Button', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+		$this->add_control(
+			'btn_text',
+			[
+				'label' => __( 'Text', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#eee',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-datepicker-field-book-btn a' => 'color: {{VALUE}}',
+                ]
+			]
+        );
+
+		$this->add_control(
+			'btn_text_hov',
+			[
+				'label' => __( 'Text hover', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#eee',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-datepicker-field-book-btn a:hover' => 'color: {{VALUE}}',
+                ]
+			]
+        );
+
+		$this->add_control(
+			'btn_bg',
+			[
+				'label' => __( 'Background', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#444',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-datepicker-field-book-btn a' => 'background-color: {{VALUE}}',
+                ]
+			]
+        );
+
+		$this->add_control(
+			'btn_bg_hov',
+			[
+				'label' => __( 'Background hover', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'default' => '#444',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-datepicker-field-book-btn a:hover' => 'background-color: {{VALUE}}',
+                ]
+			]
+        );
+        
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'button_typography',
+				'label' => __( 'Typography', 'element-bits' ),
+				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-datepicker-field-book-btn a' 
+			]
+		);
+        
+        $this->end_controls_section();
+    }
+
+    /**
+     * Parse svg
+     *
+     */
+    private function parse_svg($svg) {
+        $settings = $this->get_settings_for_display();
+
+        $svg  = preg_replace('#\s(id|class|style)="[^"]+"#', ' ', $svg);
+        $svg  = str_replace('<svg', '<svg class="eb-wh-datepicker-icon"', $svg);
+        $svg  = str_replace('<svg', '<svg width="'.absint($settings['cal_height']).'" ', $svg);
+        $svg  = str_replace('<svg', '<svg height="100%" ', $svg);
+        $svg  = str_replace('<svg', '<svg fill="'.$settings['cal_color'].'" ', $svg);
+        $svg  = preg_replace('/<!--(.*?)-->/', '', $svg);
+
+        return $svg;
     }
 
     /**
@@ -130,22 +429,25 @@ class EB_WH_Datepicker extends EB_Widget_Base {
      *
      * @todo Check for svg or png, add style controls
      */
-    private function render_icon( $icon ) {
+    private function render_icon() {
         $settings = $this->get_settings_for_display();
 
-        if ( ! isset( $settings['calendar_icon']['value']['id'] ) ) {
+        if ( ! isset( $settings['cal_icon']['url'] ) ) {
 			return '';
         }
 
-        if ( strpos( $id, '.svg' ) !== false ) {
-            $attachment_file = get_attached_file( $settings['calendar_icon']['value']['id'] );
-            $svg = file_get_contents( $attachment_file );
-            $svg = preg_replace('#\s(id|class|style)="[^"]+"#', ' ', $svg);
-            $svg = str_replace('<svg', '<svg class="eb-wh-datepicker-icon"', $svg);
-            echo $svg;
+        $ext = pathinfo($settings['cal_icon']['url'], PATHINFO_EXTENSION);
+
+        $filepath = isset( $settings['cal_icon']['id'] ) &&  $settings['cal_icon']['id'] != ''?
+                    get_attached_file( $settings['cal_icon']['id'] ) :
+                    $settings['cal_icon']['url'];
+
+        if ( $ext === 'svg' ) {
+            $svg = file_get_contents( $filepath );
+            return $this->parse_svg( $svg );
         }
         else {
-            return '<img src="' . esc_url( $settings['calendar_icon']['value']['url'] ) . '"/>';
+            return '<img src="' . esc_url( $settings['cal_icon']['url'] ) . '"/>';
         }
 
 
@@ -181,18 +483,19 @@ class EB_WH_Datepicker extends EB_Widget_Base {
         ];
         ?>
             <div class="eb-datepicker-wrapper" data-elbits='<?php echo json_encode( $w_data ); ?>'>
-                <div class="eb-datepicker-container">
+                <div class="eb-datepicker-container" style="height:<?php echo absint($settings['height']); ?>px">
                     <div class="eb-datepicker-field eb-datepicker-field-checkin">
                         <button>
                             <div class="eb-datepicker-field-inner">
-                                <span class="eb-datepicker-field-label">CHECKIN</span>
-                                <span class="eb-datepicker-field-display">
+                                <span class="eb-datepicker-field-label">
+                                    <?php _e( 'CHECKIN', 'elbits' ); ?>
+                                </span>
+                                <span class="eb-datepicker-field-display eb-datepicker-field-display-typo">
                                     <?php echo $checkin[0]; ?>
-                                    &nbsp;
                                     <?php echo $checkin[1]; ?>
                                 </span>
                                 <span class="eb-datepicker-field-icon">
-                                    <?php echo $this->calendar_icon(); ?>
+                                    <?php echo $this->render_icon(); ?>
                                 </span>
                             </div>
                         </button>
@@ -201,14 +504,15 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                     <div class="eb-datepicker-field eb-datepicker-field-checkout">
                         <button>
                             <div class="eb-datepicker-field-inner">
-                                <span class="eb-datepicker-field-label">CHECKOUT</span>
-                                <span class="eb-datepicker-field-display">
+                                <span class="eb-datepicker-field-label">
+                                    <?php _e( 'CHECKOUT', 'element-bits' ); ?>
+                                </span>
+                                <span class="eb-datepicker-field-display eb-datepicker-field-display-typo">
                                     <?php echo $checkout[0]; ?>
-                                    &nbsp;
                                     <?php echo $checkout[1]; ?>
                                 </span>
                                 <span class="eb-datepicker-field-icon">
-                                    <?php echo $this->calendar_icon(); ?>
+                                <?php echo $this->render_icon(); ?>
                                 </span>
                             </div>
                         </button>
@@ -216,7 +520,9 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 
                     <div class="eb-datepicker-field eb-datepicker-field-guests">
                         <div class="eb-datepicker-field-inner">
-                            <span class="eb-datepicker-field-label">GUESTS</span>
+                            <span class="eb-datepicker-field-label">
+                                <?php _e( 'GUESTS', 'element-bits' ); ?>
+                            </span>
                             <?php echo $this->render_num_field(); ?>
                         </div>
                     </div>
@@ -224,7 +530,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                     <div class="eb-datepicker-field eb-datepicker-field-book-btn">
                         <a <?php echo $this->get_render_attribute_string( 'book_btn' ); ?>
                             rel="noreferrer noopener">
-                            <?php _e( 'BOOK NOW', 'eb-widgets' ); ?>
+                            <?php _e( 'BOOK NOW', 'element-bits' ); ?>
                         </a>
                     </div>
                 </div>
@@ -237,13 +543,13 @@ class EB_WH_Datepicker extends EB_Widget_Base {
         return '
             <div class="eb-number-field">
             <span class="eb-number-field-sub">-</span>
-            <span class="eb-number-field-num">2</span>
+            <span class="eb-number-field-num eb-datepicker-field-display-typo">2</span>
             <span class="eb-number-field-add">+</span>
             </div>
         ';
     }
 
-    public function calendar_icon($width = '14px', $fill = '#444') {
+    public function cal_icon($width = '14px', $fill = '#444') {
         return '
             <svg
                 version="1.1" id="eb-icon-calendar" xmlns="http://www.w3.org/2000/svg"

@@ -7,7 +7,10 @@
     var checkinDisplay     = checkinField.find('.eb-datepicker-field-display');
     var checkoutDisplay    = checkoutField.find('.eb-datepicker-field-display');
     var bookBtn            = wrapper.find('.eb-datepicker-book-btn');
-    var adults = 0;
+    var addGuest           = wrapper.find('.eb-number-field-add');
+    var subGuest           = wrapper.find('.eb-number-field-sub');
+    var guestNum           = wrapper.find('.eb-number-field-num');
+    var guests = 0;
 
     var bookUrl;
     try {
@@ -40,9 +43,9 @@
 
       var checkout = '&checkout=' + getDate(checkoutPicker.selectedDates).qstr;
 
-      var adultsVal = '&adults=' + adults;
+      var guestsVal = '&adults=' + guests;
 
-      return bookUrl + checkin + checkout + adultsVal;
+      return bookUrl + checkin + checkout + guestsVal;
     }
 
     // Make an object with needed structure
@@ -53,8 +56,6 @@
       if(offset) {
         date.setDate(dateObj.getDate() + offset);
       }
-
-      console.log('v',date.getMonth())
 
       return {
         year: date.getFullYear(),
@@ -112,25 +113,27 @@
     }
 
 
-    addGuestHandle.on('click', function(ev) {
+    function handleGuestChange() {
+
+    }
+
+
+    addGuest.on('click', function(ev) {
       if(guests < 8) {
         guests += 1;
         guestNum.text(guests);
       }
 
-      var arr = checkinPicker.get('select');
-      var dep = checkoutPicker.get('select');
-
-      submitBtn.attr('href', buildBookUrl(arr, dep));
+      bookBtn.attr('href', buildBookUrl());
     });
 
-    subGuestHandle.on('click', function(){
+    subGuest.on('click', function(){
       if(guests > 1) {
           guests -= 1;
           guestNum.text(guests);
       }
 
-      var arr = checkinPicker.get('select');
+      bookBtn.attr('href', buildBookUrl());
     });
 
   };

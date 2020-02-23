@@ -324,6 +324,10 @@
   = WH Datepicker
 ==============================================
 */
+.eb-datepicker-field * {
+  cursor: pointer!important;
+}
+
 .eb-datepicker-field > button {
   display: block;
   background: none;
@@ -340,15 +344,11 @@
 .eb-datepicker-field > button:after {
   content: "";
   width: 1px;
-  height: 80%;
+  height: 100%;
   position: absolute;
-  top: 10%;
+  top: 0;
   right: 0;
-  background: #ddd;
-}
-
-.eb-datepicker-field > button:hover {
-  background: #f9f9f9;
+  background-color: #ddd;
 }
 
 .eb-datepicker-container {
@@ -359,14 +359,21 @@
   justify-content: space-between;
 }
 
-.eb-datepicker-book-btn {
-  display: block;
+.eb-datepicker-book-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none!important;
   text-align: center;
+  width: 100%;
   height: 100%;
-  background: #a6965e;
+  background: #444;
   color: #fff;
-  line-height: 3;
+  transition: all 0.3s;
+}
+
+.eb-datepicker-book-btn:hover {
+  color: #fff;
 }
 
 .eb-datepicker-field-inner {
@@ -375,14 +382,11 @@
   justify-content: center;
 }
 
-.eb-datepicker-field-label,
-.eb-datepicker-field-icon {
+.eb-datepicker-field-label {
   font-weight: 300;
-  font-size: 14px;
+  font-size: 13px;
   color: #818181;
 }
-
-
 
 .eb-datepicker-field-display {
   font-size: 24px;
