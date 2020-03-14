@@ -38,7 +38,7 @@ class EB_Vertical_Sep extends EB_Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __( 'EB: vertical-sep', 'element-bits' );
+        return __( 'EB: Vertical Separator', 'element-bits' );
     }
 
     /**
