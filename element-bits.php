@@ -24,9 +24,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-
-
-
 add_action( 'plugins_loaded', 'elbits_init' );
 
 /**
@@ -63,15 +60,28 @@ function elbits_init() {
 		return;
     }
 
-    // TODO: search for official elementor hook for breakpoints,
-    // add to elebits settings api
+    // TODO: search for official elementor hook for breakpoints, default colors
     @update_option( 'elementor_container_width', 1280 );
     @update_option( 'elementor_viewport_lg', 1366 );
     @update_option( 'elementor_viewport_md', 1024 );
     @update_option( 'elementor_disable_color_schemes', 'yes' );
     @update_option( 'elementor_disable_typography_schemes', 'yes' );
 
+    // Helper functions
     require ELBITS_PATH . 'inc/functions.php';
+
+    // Register custom dynamic tags
+    add_action( 'elementor/dynamic_tags/register_tags', function( $dynamic_tags ) {
+        \Elementor\Plugin::$instance->dynamic_tags->register_group( 'eb-dynamic-tags', [
+            'title' => 'ElementBits'
+        ] );
+
+        // Include the Dynamic tag class file
+        include_once ELBITS_PATH . 'dynamic-tags/site-logo.php';
+
+        // Register the tag
+        $dynamic_tags->register_tag( '\ElementBits\Tags\Site_Logo' );
+    } );
 
     // Add widgets
     add_action( 'elementor/init', function() {
@@ -118,18 +128,11 @@ function elbits_init() {
 
         wp_register_style( 'eb-menu-icon-button', ELBITS_URL . 'assets/css/eb-menu-icon-button.css', [ 'element-bits' ], ELBITS_VERSION );
 
-        // wp_register_style( 'pickadate', ELBITS_URL . 'assets/vendor/pickadate/themes/default.css', [], ELBITS_VERSION );
-        // wp_register_style( 'pickadate-date', ELBITS_URL . 'assets/vendor/pickadate/themes/default.date.css', [], ELBITS_VERSION );
-
         wp_register_style( 'flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css', [], ELBITS_VERSION );
         // wp_register_style( 'flatpickr-theme', 'https://npmcdn.com/flatpickr/dist/themes/airbnb.css', ['flatpickr'], ELBITS_VERSION );
         wp_register_script( 'flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr', [], ELBITS_VERSION, true );
 
         wp_register_script( 'eb-wh-datepicker', ELBITS_URL . 'assets/js/eb-wh-datepicker.js', [ 'jquery', 'flatpickr' ], ELBITS_VERSION, true );
-
-
-        // wp_register_script( 'pickadate', ELBITS_URL . 'assets/vendor/pickadate/picker.js', [], ELBITS_VERSION, true );
-        // wp_register_script( 'pickadate-date', ELBITS_URL . 'assets/vendor/pickadate/picker.date.js', [], ELBITS_VERSION, true );
     } );
 
     // Preview styles

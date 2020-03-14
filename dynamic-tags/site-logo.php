@@ -80,19 +80,7 @@ class Site_Logo extends \Elementor\Core\DynamicTags\Data_Tag {
     *
     * @return void
     */
-    protected function _register_controls() {
-        $this->add_control(
-            'color',
-            [
-                'label' => __( 'Novel Logo Color', 'element-bits' ),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'white' => 'white',
-                    'blue' => 'blue'
-                ],
-            ]
-        );
-    }
+    protected function _register_controls() {}
 
     /**
     * Render
@@ -106,16 +94,15 @@ class Site_Logo extends \Elementor\Core\DynamicTags\Data_Tag {
     */
     public function get_value( array $options = [] ) {
         $logo_id = get_theme_mod( 'entre_logo_lg' );
-        $color = $this->get_settings( 'color' );
 
         if ( $logo_id ) {
             $url = wp_get_attachment_image_src( $logo_id, 'full' )[0];
         } else {
-            $url = get_theme_file_uri( 'assets/svg/novel/novel-logo-'.esc_attr( $color ).'.svg' );
+            $url = get_theme_file_uri( 'assets/svg/novel/novel-logo-blue.svg' );
         }
 
         return [
-            'id' => $logo_id,
+            'id' => $logo_id ?: null,
             'url' => $url,
         ];
     }
