@@ -34,7 +34,7 @@ add_action( 'plugins_loaded', 'elbits_init' );
 function elbits_init() {
 
     // Plugin paths/uri
-    define( 'ELBITS_VERSION', '1.0.1' );
+    define( 'ELBITS_VERSION', '1.0.3' );
     define( 'ELBITS_URL', plugins_url( '/', __FILE__ ) );
     define( 'ELBITS_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -104,6 +104,7 @@ function elbits_init() {
         require ELBITS_PATH . 'widgets/eb-whapi-offers.php';
         require ELBITS_PATH . 'widgets/eb-wh-datepicker.php';
         require ELBITS_PATH . 'widgets/eb-menu-icon-button.php';
+        require ELBITS_PATH . 'widgets/eb-google-map.php';
     } );
 
     // Register widgets
@@ -115,6 +116,7 @@ function elbits_init() {
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Whapi_Offers() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_WH_Datepicker() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Menu_Icon_Button() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Google_Map() );
     } );
 
     // Front end scripts/styles
@@ -133,6 +135,16 @@ function elbits_init() {
         wp_register_script( 'flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr', [], ELBITS_VERSION, true );
 
         wp_register_script( 'eb-wh-datepicker', ELBITS_URL . 'assets/js/eb-wh-datepicker.js', [ 'jquery', 'flatpickr' ], ELBITS_VERSION, true );
+
+        wp_enqueue_script( 'eb-google-map', ELBITS_URL . 'assets/js/eb-google-map.js', [ 'element-bits' ], ELBITS_VERSION, true );
+
+        // wp_register_style( 'leaflet', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css', [ 'element-bits' ], null );
+        // wp_register_script( 'leaflet', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js', [ 'element-bits' ], null, true );
+
+        $gmap_api_key = 'AIzaSyDTir27b3EblMzROiGvrQkfVbJbWfoEHUM';
+        if ( $gmap_api_key  ) {
+            wp_enqueue_script( 'googleapis-maps', 'https://maps.googleapis.com/maps/api/js?key=' . $gmap_api_key, [], null, false );
+        }
     } );
 
     // Preview styles
