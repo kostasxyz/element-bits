@@ -32,7 +32,6 @@ add_action( 'plugins_loaded', 'elbits_init' );
  * @todo Add novel signature svg in dynamic tag
  */
 function elbits_init() {
-
     // Plugin paths/uri
     define( 'ELBITS_VERSION', '1.0.3' );
     define( 'ELBITS_URL', plugins_url( '/', __FILE__ ) );
@@ -59,6 +58,10 @@ function elbits_init() {
 
 		return;
     }
+
+    // Settings init
+    require 'inc/settings.php';
+    $settings = new \ElementBits\Settings;
 
     // TODO: search for official elementor hook for breakpoints, default colors
     @update_option( 'elementor_container_width', 1280 );
@@ -120,7 +123,7 @@ function elbits_init() {
     } );
 
     // Front end scripts/styles
-    add_action( 'wp_enqueue_scripts', function() {
+    add_action( 'wp_enqueue_scripts', function() use ( $settings ) {
 		wp_enqueue_style( 'element-bits', ELBITS_URL . 'assets/css/element-bits.css', [], ELBITS_VERSION );
         wp_enqueue_script( 'element-bits', ELBITS_URL . 'assets/js/element-bits.js', [ 'jquery' ], ELBITS_VERSION, true );
 
@@ -141,14 +144,17 @@ function elbits_init() {
         // wp_register_style( 'leaflet', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css', [ 'element-bits' ], null );
         // wp_register_script( 'leaflet', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js', [ 'element-bits' ], null, true );
 
-        $gmap_api_key = 'AIzaSyDTir27b3EblMzROiGvrQkfVbJbWfoEHUM';
-        if ( $gmap_api_key  ) {
-            wp_enqueue_script( 'googleapis-maps', 'https://maps.googleapis.com/maps/api/js?key=' . $gmap_api_key, [], null, false );
+        if( $gmap_api_key = $settings->options( 'gmap_key' ) ) {
+            wp_enqueue_script( 'googleapis-maps', 'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $gmap_api_key ), [], null, false );
         }
     } );
 
     // Preview styles
     add_action( 'elementor/editor/before_enqueue_scripts', function() {
+        wp_enqueue_style( 'element-bits', ELBITS_URL . 'assets/css/admin.css', [], ELBITS_VERSION );
+    } );
+
+    add_action( 'admin_enqueue_scripts', function() {
         wp_enqueue_style( 'element-bits', ELBITS_URL . 'assets/css/admin.css', [], ELBITS_VERSION );
     } );
 }
