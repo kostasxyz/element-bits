@@ -80,10 +80,10 @@ function elbits_init() {
         ] );
 
         // Include the Dynamic tag class file
-        include_once ELBITS_PATH . 'dynamic-tags/site-logo.php';
+        include_once ELBITS_PATH . 'dynamic-tags/dynamic-tags.php';
 
         // Register the tag
-        $dynamic_tags->register_tag( '\ElementBits\Tags\Site_Logo' );
+        // $dynamic_tags->register_tag( '\ElementBits\Tags\Site_Logo' );
     } );
 
     // Add widgets
