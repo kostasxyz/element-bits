@@ -91,27 +91,19 @@ class EB_Google_Map extends EB_Widget_Base {
         );
 
         $this->add_control(
-            'lat',
+            'lat_lng',
             [
-                'label' => __( 'Latitude', 'element-bits' ),
+                'label' => __( 'Latitude / Longtidute', 'element-bits' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => '',
-                'default' => '35.1483115',
+                'default' => '35.1483115, 33.3497305',
                 'label_block' => true,
+                'description' => 'Latitude / Longtidute seperated by coma (34.847528, 32.435806)',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
-
-        $this->add_control(
-            'lng',
-            [
-                'label' => __( 'Longitude', 'element-bits' ),
-                'type' => Controls_Manager::TEXT,
-                'placeholder' => '',
-                'default' => '33.3497305',
-                'label_block' => true,
-            ]
-        );
-
 
         $this->add_control(
             'map_zoom',
@@ -232,15 +224,18 @@ class EB_Google_Map extends EB_Widget_Base {
 
         $styles = require_once ELBITS_PATH . 'inc/map-styles.php';
 
-        if ( empty( $settings['lat'] ) || empty( $settings['lng'] ) ) {
+        if ( empty( $settings['lat_lng'] ) || strpos( $settings['lat_lng'], ',' ) === false ) {
+            echo 'Please enter Latitude / Longtidute seperated by coma (34.847528, 32.435806)';
             return;
         }
+
+        $lat_lng = explode( ',', $settings['lat_lng'] );
 
         $w_data = [
             'map_id'   => 'eb-gmap-'. esc_attr( $this->get_id() ),
             'icon'   => !empty( $settings['marker']['url'] ) ? esc_url( $settings['marker']['url'] ) : false,
-            'lat'      => (float) $settings['lat'],
-            'lng'      => (float) $settings['lng'],
+            'lat'      => (float) trim( $lat_lng[0] ),
+            'lng'      => (float) trim( $lat_lng[1] ),
             'scroll'   => $settings['no_scroll'] === 'yes' ? false : true,
             'info'     => esc_html( $settings['info'] ),
             'zoom'     => absint( $settings['map_zoom']['size'] )
