@@ -9,8 +9,6 @@
     var wrapper = $scope.find('.eb-widget-wrapper');
     var data = wrapper.data('elbits');
 
-    console.log(data);
-
     init();
 
     function init() {
