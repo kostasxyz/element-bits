@@ -1,13 +1,12 @@
-;(function($){
-    //-----------------------------------------------------
-  // Menu icon
-  $('.ebjs-menu-icon-toggle').each(function(i, b) {
-    let $this = $(b);
-    $this.on('click', function(e) {
-      e.preventDefault();
-      $this.toggleClass('eb-menu-icon-btn--toggled');
-      $('body').toggleClass('eb-menu-icon-btn--toggled');
-    })
+(function($){
+    //-----------------------------------------------------
+    // Menu icon
+
+  $('body').on( 'click', '.ebjs-menu-icon-toggle', function(e) {
+    e.preventDefault();
+    // deprecated css class
+    $('body').toggleClass('eb-menu-icon-btn--toggled');
+    $('body').toggleClass('eb-menu-icon-btn--active');
   });
 
 })(jQuery);

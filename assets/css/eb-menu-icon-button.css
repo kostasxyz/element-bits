@@ -79,12 +79,12 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-1.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-1 .eb-menu-icon-btn__line--1 {
   -webkit-transform: translate3d(0, 9px, 0) rotate(135deg);
   transform: translate3d(0, 9px, 0) rotate(135deg);
 }
 
-.eb-menu-icon-btn--x-1.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-1 .eb-menu-icon-btn__line--2 {
   opacity: 0;
   right: -120px;
   -webkit-transform: translate3d(-30px, 0, 0);
@@ -96,7 +96,7 @@
   transition: opacity .2s ease-in-out,  transform .2s ease-in-out,  right .0s ease-in-out .2s,  -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-1.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-1 .eb-menu-icon-btn__line--3 {
   -webkit-transform: translate3d(0, -9px, 0) rotate(-135deg);
   transform: translate3d(0, -9px, 0) rotate(-135deg);
 }
@@ -135,7 +135,7 @@
   transition: opacity .0s ease-in-out .3s,  bottom .2s ease-in-out .3s;
 }
 
-.eb-menu-icon-btn--x-2.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-2 .eb-menu-icon-btn__line--1 {
   top: 9px;
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
@@ -147,7 +147,7 @@
   transition: top .3s ease-in-out,  transform .3s linear .3s,  -webkit-transform .3s linear .3s;
 }
 
-.eb-menu-icon-btn--x-2.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1:before {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-2 .eb-menu-icon-btn__line--1:before {
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
@@ -158,14 +158,14 @@
   transition: transform .1s ease-in-out .3s, -webkit-transform .1s ease-in-out .3s;
 }
 
-.eb-menu-icon-btn--x-2.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-2 .eb-menu-icon-btn__line--2 {
   opacity: 0;
   -webkit-transition: opacity .0s ease-in-out .3s;
   -o-transition: opacity .0s ease-in-out .3s;
   transition: opacity .0s ease-in-out .3s;
 }
 
-.eb-menu-icon-btn--x-2.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-2 .eb-menu-icon-btn__line--3 {
   bottom: 9px;
   opacity: 0;
   -webkit-transition: bottom .3s ease-in-out,  opacity .0s ease-in-out .3s;
@@ -207,7 +207,7 @@
   transition: opacity .0s ease-in-out .25s;
 }
 
-.eb-menu-icon-btn--x-3.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-3 .eb-menu-icon-btn__line--1 {
   top: 18px;
   -webkit-transform: translate3d(0, -9px, 0) rotate(-45deg);
   transform: translate3d(0, -9px, 0) rotate(-45deg);
@@ -218,7 +218,7 @@
   transition: top .2s ease-in-out,  transform .15s ease-in-out .2s,  -webkit-transform .15s ease-in-out .2s;
 }
 
-.eb-menu-icon-btn--x-3.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1:before {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-3 .eb-menu-icon-btn__line--1:before {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
@@ -229,14 +229,14 @@
   transition: transform .15s ease-in-out .3s, -webkit-transform .15s ease-in-out .3s;
 }
 
-.eb-menu-icon-btn--x-3.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-3 .eb-menu-icon-btn__line--2 {
   opacity: 0;
   -webkit-transition: opacity .0s ease-in-out .1s;
   -o-transition: opacity .0s ease-in-out .1s;
   transition: opacity .0s ease-in-out .1s;
 }
 
-.eb-menu-icon-btn--x-3.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-3 .eb-menu-icon-btn__line--3 {
   opacity: 0;
   -webkit-transition: opacity .0s ease-in-out .2s;
   -o-transition: opacity .0s ease-in-out .2s;
@@ -272,7 +272,7 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-4.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-4 .eb-menu-icon-btn__line--1 {
   opacity: 0;
   -webkit-transform: translate3d(-18px, 0, 0);
   transform: translate3d(-18px, 0, 0);
@@ -281,7 +281,7 @@
   transition: all .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-4.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-4 .eb-menu-icon-btn__line--2 {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -292,7 +292,7 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-4.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2:before {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-4 .eb-menu-icon-btn__line--2:before {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
@@ -303,7 +303,7 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-4.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-4 .eb-menu-icon-btn__line--3 {
   opacity: 0;
   -webkit-transform: translate3d(18px, 0, 0);
   transform: translate3d(18px, 0, 0);
@@ -361,28 +361,28 @@
   transition: opacity .2s ease-in-out, transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-5 .eb-menu-icon-btn__line--1 {
   width: 0;
   -webkit-transition: width .2s ease-in-out;
   -o-transition: width .2s ease-in-out;
   transition: width .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-5 .eb-menu-icon-btn__line--2 {
   width: 0;
   -webkit-transition: width .2s ease-in-out .1s;
   -o-transition: width .2s ease-in-out .1s;
   transition: width .2s ease-in-out .1s;
 }
 
-.eb-menu-icon-btn--x-5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-5 .eb-menu-icon-btn__line--3 {
   width: 0;
   -webkit-transition: width .2s ease-in-out .2s;
   -o-transition: width .2s ease-in-out .2s;
   transition: width .2s ease-in-out .2s;
 }
 
-.eb-menu-icon-btn--x-5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--4 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-5 .eb-menu-icon-btn__line--4 {
   opacity: 1;
   -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
   transform: rotate(45deg) translate3d(0, 0, 0);
@@ -393,7 +393,7 @@
   transition: opacity .2s ease-in-out .2s, transform .2s ease-in-out .2s, -webkit-transform .2s ease-in-out .2s;
 }
 
-.eb-menu-icon-btn--x-5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--5 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-5 .eb-menu-icon-btn__line--5 {
   opacity: 1;
   -webkit-transform: rotate(-45deg) translate3d(0, 0, 0);
   transform: rotate(-45deg) translate3d(0, 0, 0);
@@ -450,7 +450,7 @@
   transition: transform .2s ease-in-out .3s, opacity 0s ease-in-out .4s, -webkit-transform .2s ease-in-out .3s;
 }
 
-.eb-menu-icon-btn--x-6.eb-menu-icon-btn--toggled .eb-menu-icon-btn__lines {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-6 .eb-menu-icon-btn__lines {
   -webkit-transform: translate(-50%, -50%) rotate(90deg);
   -ms-transform: translate(-50%, -50%) rotate(90deg);
   transform: translate(-50%, -50%) rotate(90deg);
@@ -461,7 +461,7 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--x-6.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-6 .eb-menu-icon-btn__line--1 {
   opacity: 0;
   -webkit-transform: translate3d(0, 9px, 0);
   transform: translate3d(0, 9px, 0);
@@ -472,7 +472,7 @@
   transition: transform .2s ease-in-out .2s, opacity 0s ease-in-out .4s, -webkit-transform .2s ease-in-out .2s;
 }
 
-.eb-menu-icon-btn--x-6.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-6 .eb-menu-icon-btn__line--2 {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -483,7 +483,7 @@
   transition: transform .2s ease-in-out .5s, -webkit-transform .2s ease-in-out .5s;
 }
 
-.eb-menu-icon-btn--x-6.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2:before {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-6 .eb-menu-icon-btn__line--2:before {
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
@@ -494,7 +494,7 @@
   transition: transform .2s ease-in-out .5s, -webkit-transform .2s ease-in-out .5s;
 }
 
-.eb-menu-icon-btn--x-6.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--x-6 .eb-menu-icon-btn__line--3 {
   opacity: 0;
   -webkit-transform: translate3d(0, -9px, 0);
   transform: translate3d(0, -9px, 0);
@@ -514,7 +514,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back1.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back1 .eb-menu-icon-btn__line--1 {
   -webkit-transform: translate3d(-6.5px, 1px, 0) rotate(135deg) scaleX(0.7);
   transform: translate3d(-6.5px, 1px, 0) rotate(135deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -524,7 +524,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back1.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back1 .eb-menu-icon-btn__line--3 {
   -webkit-transform: translate3d(-6.5px, -1px, 0) rotate(-135deg) scaleX(0.7);
   transform: translate3d(-6.5px, -1px, 0) rotate(-135deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -543,7 +543,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back2.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back2 .eb-menu-icon-btn__line--1 {
   -webkit-transform: translate3d(-6.5px, 1px, 0) rotate(-225deg) scaleX(0.7);
   transform: translate3d(-6.5px, 1px, 0) rotate(-225deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -553,7 +553,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back2.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back2 .eb-menu-icon-btn__line--3 {
   -webkit-transform: translate3d(-6.5px, -1px, 0) rotate(225deg) scaleX(0.7);
   transform: translate3d(-6.5px, -1px, 0) rotate(225deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -587,7 +587,7 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--back3.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back3 .eb-menu-icon-btn__line--1 {
   -webkit-transform: translate3d(-6.5px, 1px, 0) rotate(135deg) scaleX(0.7);
   transform: translate3d(-6.5px, 1px, 0) rotate(135deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .2s ease-in-out;
@@ -597,7 +597,7 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
 }
 
-.eb-menu-icon-btn--back3.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back3 .eb-menu-icon-btn__line--2 {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
@@ -608,7 +608,7 @@
   transition: transform .2s ease-in-out .1s, -webkit-transform .2s ease-in-out .1s;
 }
 
-.eb-menu-icon-btn--back3.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back3 .eb-menu-icon-btn__line--3 {
   -webkit-transform: translate3d(-6.5px, -1px, 0) rotate(225deg) scaleX(0.7);
   transform: translate3d(-6.5px, -1px, 0) rotate(225deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .2s ease-in-out .2s;
@@ -642,7 +642,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back4.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back4 .eb-menu-icon-btn__line--1 {
   -webkit-transform: translate3d(-6.5px, 16px, 0) rotate(-135deg) scaleX(0.7);
   transform: translate3d(-6.5px, 16px, 0) rotate(-135deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -652,7 +652,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back4.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--2 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back4 .eb-menu-icon-btn__line--2 {
   -webkit-transform: rotate(-180deg);
   -ms-transform: rotate(-180deg);
   transform: rotate(-180deg);
@@ -663,7 +663,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back4.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back4 .eb-menu-icon-btn__line--3 {
   -webkit-transform: translate3d(-6.5px, -16px, 0) rotate(-225deg) scaleX(0.7);
   transform: translate3d(-6.5px, -16px, 0) rotate(-225deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -690,7 +690,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__lines {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back5 .eb-menu-icon-btn__lines {
   -webkit-transform: rotate(180deg) translate(50%, 50%);
   -ms-transform: rotate(180deg) translate(50%, 50%);
   transform: rotate(180deg) translate(50%, 50%);
@@ -701,7 +701,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back5 .eb-menu-icon-btn__line--1 {
   -webkit-transform: translate3d(6.5px, 1px, 0) rotate(45deg) scaleX(0.7);
   transform: translate3d(6.5px, 1px, 0) rotate(45deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -711,7 +711,7 @@
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back5.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back5 .eb-menu-icon-btn__line--3 {
   -webkit-transform: translate3d(6.5px, -1px, 0) rotate(-45deg) scaleX(0.7);
   transform: translate3d(6.5px, -1px, 0) rotate(-45deg) scaleX(0.7);
   -webkit-transition: -webkit-transform .3s ease-in-out;
@@ -737,7 +737,7 @@
   transition: transform .3s ease-in-out, bottom .2s ease-in-out .3s, -webkit-transform .3s ease-in-out;
 }
 
-.eb-menu-icon-btn--back6.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--1 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back6 .eb-menu-icon-btn__line--1 {
   top: 9px;
   -webkit-transform: translate3d(-6.5px, -7.5px, 0) rotate(-45deg) scaleX(0.7);
   transform: translate3d(-6.5px, -7.5px, 0) rotate(-45deg) scaleX(0.7);
@@ -748,7 +748,7 @@
   transition: top .2s ease-in-out,  transform .3s ease-in-out .2s,  -webkit-transform .3s ease-in-out .2s;
 }
 
-.eb-menu-icon-btn--back6.eb-menu-icon-btn--toggled .eb-menu-icon-btn__line--3 {
+.eb-menu-icon-btn--active .eb-menu-icon-btn--back6 .eb-menu-icon-btn__line--3 {
   bottom: 9px;
   -webkit-transform: translate3d(-6.5px, 8px, 0) rotate(45deg) scaleX(0.7);
   transform: translate3d(-6.5px, 8px, 0) rotate(45deg) scaleX(0.7);

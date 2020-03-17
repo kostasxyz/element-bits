@@ -153,7 +153,7 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
                 ],
                 'default' => '#444',
                 'selectors' => [
-                    '{{WRAPPER}} .eb-menu-icon-btn__line' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .eb-menu-icon-btn__line' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -169,7 +169,7 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
                 ],
                 'default' => '#444',
                 'selectors' => [
-                    '{{WRAPPER}} .eb-menu-icon-btn--open .eb-menu-icon-btn__line' => 'background-color: {{VALUE}}',
+                    '.eb-menu-icon-btn--active {{WRAPPER}} .eb-menu-icon-btn__line' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -227,7 +227,7 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
         $sets = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'btn', [
-                'class' => 'eb-menu-icon-btn eb-menu-icon-btn--x-' . esc_attr( $sets['burger_style'] ) . ' ebjs-menu-icon-toggle',
+            'class' => 'eb-menu-icon-btn eb-menu-icon-btn--x-' . esc_attr( $sets['burger_style'] ) . ' ebjs-menu-icon-toggle',
         ] );
 
         if ( ! empty( $sets['link']['url'] ) ) {
@@ -248,5 +248,6 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
                 </a>
             </div>
         <?php
+
     }
 }
