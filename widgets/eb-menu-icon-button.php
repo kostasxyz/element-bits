@@ -198,6 +198,18 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'link',
+            [
+                'label' => __( 'Link', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::URL,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'placeholder' => __( 'https://your-link.com', 'element-bits' ),
+            ]
+        );
+
         $this->end_controls_section();
 
     }
@@ -213,10 +225,17 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
     protected function render() {
 
         $sets = $this->get_settings_for_display();
+
+        $this->add_render_attribute( 'btn', [
+                'class' => 'eb-menu-icon-btn eb-menu-icon-btn--x-' . esc_attr( $sets['burger_style'] ) . ' ebjs-menu-icon-toggle',
+        ] );
+
+        if ( ! empty( $sets['link']['url'] ) ) {
+            $this->add_link_attributes( 'btn', $sets['link'] );
+        }
         ?>
             <div class="eb-menu-icon-btn-wrap" style="justify-content: <?php echo esc_attr( $sets['burger_align'] ); ?>">
-                <div
-                    class="eb-menu-icon-btn eb-menu-icon-btn--x-<?php echo esc_attr( $sets['burger_style'] ); ?> ebjs-menu-icon-toggle">
+                <a <?php echo $this->get_render_attribute_string( 'btn' ); ?> >
                     <div class="eb-menu-icon-btn__lines">
                         <div class="eb-menu-icon-btn__line eb-menu-icon-btn__line--1"></div>
                         <div class="eb-menu-icon-btn__line eb-menu-icon-btn__line--2"></div>
@@ -226,9 +245,8 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
                             <div class="eb-menu-icon-btn__line eb-menu-icon-btn__line--5"></div>
                         <?php endif; ?>
                     </div>
-                </div>
+                </a>
             </div>
         <?php
-
     }
 }
