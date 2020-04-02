@@ -33,7 +33,7 @@ add_action( 'plugins_loaded', 'elbits_init' );
  */
 function elbits_init() {
     // Plugin paths/uri
-    define( 'ELBITS_VERSION', '1.0.3' );
+    define( 'ELBITS_VERSION', '1.0.4' );
     define( 'ELBITS_URL', plugins_url( '/', __FILE__ ) );
     define( 'ELBITS_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -72,6 +72,10 @@ function elbits_init() {
 
     // Helper functions
     require ELBITS_PATH . 'inc/functions.php';
+
+    // Make columns clickable
+    require ELBITS_PATH . 'inc/class-clickable-column.php';
+    new \ElementBits\Clickable_Column();
 
     // Register custom dynamic tags
     add_action( 'elementor/dynamic_tags/register_tags', function( $dynamic_tags ) {
