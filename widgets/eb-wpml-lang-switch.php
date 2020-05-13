@@ -64,7 +64,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
      * @return array Widget scripts dependencies.
      */
     public function get_script_depends() {
-        return [ 'tinglejs', 'eb-widget-wpml-lang-switch' ];
+        return [ 'tingle', 'eb-wpml-lang-switch' ];
     }
 
     /**
@@ -75,7 +75,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
      * @return array Widget scripts dependencies.
      */
     public function get_style_depends() {
-        return [ 'tinglejs', 'eb-elements' ];
+        return [ 'tingle', 'eb-elements' ];
     }
 
     /**
