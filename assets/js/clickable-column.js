@@ -8,7 +8,7 @@
         return true;
       }
 
-      // handle elementor actions
+      // Handle elementor actions
       if (url.match( '^%23elementor-action')) {
 
         var hash = url;
