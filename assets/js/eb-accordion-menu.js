@@ -12,19 +12,29 @@
     var currInd;
 
     function toggleInd(val) {
+      console.log(val)
       return val === '+' ? '-' : '+';
+    }
+
+
+    function currInd(target) {
+      return $(target).find('.eb-accordion-wp-menu-indicator').text();
     }
 
     if(parents.length) {
       var links = parents.find('> a');
-      links.append(' <span class="eb-accordion-wp-menu-indicator">+</span>');
+      var indEl = document.createElement('span');
+      indEl.classList.add('eb-accordion-wp-menu-indicator');
+      indEl.innerHTML = '+';
+      links.append(indEl);
       links.on('click', function(e) {
         e.preventDefault();
-        var curr = $(e.currentTarget).next('.sub-menu');
+        var curr = $(e.target).next('.sub-menu');
         submenus.not(curr).slideUp();
         curr.stop(1,1).slideToggle();
-        links.not(curr).find('.eb-accordion-wp-menu-indicator').text('+');
-        $('> a', e.currentTarget).find('.eb-accordion-wp-menu-indicator')[0].innerHTML = toggleInd($('> a', e.currentTarget).find('.eb-accordion-wp-menu-indicator')[0].innerHTML);
+        links.not(e.target).find('.eb-accordion-wp-menu-indicator').text('+');
+        var ind = $(e.target).find('.eb-accordion-wp-menu-indicator');
+        ind.text(ind.text() == '+' ? '-' : '+');
       });
     }
   };
