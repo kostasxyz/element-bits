@@ -83,6 +83,7 @@ add_action( 'rest_api_init', function () {
     register_rest_route( 'elbits/v1', '/whapi/offers/refresh', array(
         'methods' => 'GET',
         'callback' => 'elbits_whapi_offers_refresh',
+        'permission_callback' => '__return_true'
     ) );
 } );
 
