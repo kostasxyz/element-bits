@@ -14,8 +14,8 @@
 
 .eb-menu-icon-btn {
   position: relative;
-  height: 60px;
-  width: 60px;
+  height: 20px;
+  width: 30px;
   cursor: pointer;
   overflow: hidden;
 }

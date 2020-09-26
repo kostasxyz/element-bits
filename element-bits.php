@@ -63,13 +63,6 @@ function elbits_init() {
     require 'inc/settings.php';
     $settings = new \ElementBits\Settings;
 
-    // TODO: search for official elementor hook for breakpoints, default colors
-    @update_option( 'elementor_container_width', 1280 );
-    @update_option( 'elementor_viewport_lg', 1366 );
-    @update_option( 'elementor_viewport_md', 1024 );
-    @update_option( 'elementor_disable_color_schemes', 'yes' );
-    @update_option( 'elementor_disable_typography_schemes', 'yes' );
-
     // Helper functions
     require ELBITS_PATH . 'inc/functions.php';
 
