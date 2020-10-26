@@ -665,7 +665,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                                                     <span class="eb-whoffers-meta-labels">
                                                         <?php _e( 'Book by: ', 'element-bits' ); ?>
                                                     </span>
-                                                    <span class="ntr-whapi-offer-meta"><?php echo date_i18n( 'd M Y', strtotime( $offer->active_tod ) ); ?></span>
+                                                    <span class="ntr-whapi-offer-meta"><?php echo date_i18n( 'd M Y', strtotime( $offer->active_tod . '+0' ) ); ?></span>
                                                 <?php endif; ?>
 
                                                 <?php if( $offer->fromd ) : ?>
@@ -674,8 +674,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                                                         <?php _e( 'Stay period: ', 'element-bits' ); ?>
                                                     </span>
                                                     <span class="ntr-whapi-offer-meta">
-                                                      <?php echo date_i18n( 'd M Y', strtotime( $offer->fromd ) ); ?> -
-                                                      <?php echo date_i18n( 'd M Y', strtotime( $offer->tod ) ); ?>
+                                                      <?php echo date_i18n( 'd M Y', strtotime( $offer->fromd . '+0' ) ); ?> -
+                                                      <?php echo date_i18n( 'd M Y', strtotime( $offer->tod . '+0' ) ); ?>
                                                     </span>
                                                 <?php endif; ?>
 
