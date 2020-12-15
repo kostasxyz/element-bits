@@ -9,18 +9,18 @@ class Settings extends \Elementor\Settings {
 		add_action( 'admin_menu', [ $this, 'add_admin_menu' ], 111 );
 		add_action( 'admin_init', [ $this, 'settings_init_general' ] );
     }
-    
+
     public function add_admin_menu() {
-		add_submenu_page( 
-            \Elementor\Settings::PAGE_ID, 
-            'Element Bits', 
-            __( 'ElementBits', 'elements-bits' ), 
-            'manage_options', 
-            'element_bits', 
-            [ $this, 'settings_page_render' ] 
+		add_submenu_page(
+            \Elementor\Settings::PAGE_ID,
+            'Element Bits',
+            __( 'ElementBits', 'elements-bits' ),
+            'manage_options',
+            'element_bits',
+            [ $this, 'settings_page_render' ]
         );
     }
-    
+
     /**
      * Settings page render
      */
@@ -41,13 +41,13 @@ class Settings extends \Elementor\Settings {
      * Settins api init
      */
     public function settings_init_general() {
-        register_setting( 
-            'elementbits_settings_group', 
-            'elementbits_settings', 
+        register_setting(
+            'elementbits_settings_group',
+            'elementbits_settings',
             [
                 'sanitize_callback' => [ $this, 'sanitize' ],
 				'default'           => null,
-            ] 
+            ]
         );
 
         add_settings_section( 'elementbits_settings_section', 'General Settings', null, 'elementbits_settings' );
@@ -70,7 +70,10 @@ class Settings extends \Elementor\Settings {
         $options = get_option( 'elementbits_settings' );
 
         if( $key ) {
-            return $options[$key];
+            if( isset( $options[$key] ) )
+                return $options[$key];
+            else
+                return null;
         }
 
         return $options;

@@ -105,6 +105,7 @@ function elbits_init() {
         require ELBITS_PATH . 'widgets/eb-wh-datepicker.php';
         require ELBITS_PATH . 'widgets/eb-menu-icon-button.php';
         require ELBITS_PATH . 'widgets/eb-google-map.php';
+        require ELBITS_PATH . 'widgets/eb-image-hover.php';
     } );
 
     // Register widgets
@@ -117,6 +118,7 @@ function elbits_init() {
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_WH_Datepicker() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Menu_Icon_Button() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Google_Map() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Image_Hover() );
     } );
 
     // Front end scripts/styles
