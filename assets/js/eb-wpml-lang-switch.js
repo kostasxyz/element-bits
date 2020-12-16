@@ -1,34 +1,21 @@
 ;(function($){
 
   var ebWpmlLangSwitch = function( $scope, $ ) {
-    var openBtns = $scope.find('.ntrjs-eb-lang-switch-handle');
-    console.log(openBtns)
+    var openBtns = $scope.find('.ebjs-lang-switch-modal-open');
+    var closeBtns = $scope.find('.ebjs-lang-switch-modal-close');
+    var modal = $scope.find('.ebjs-modal-container');
 
-    // instanciate new modal
-    var modal = new tingle.modal({
-      footer: false,
-      stickyFooter: false,
-      closeMethods: ['overlay', 'button', 'escape'],
-      cssClass: ['eb-wpml-lang-switch-modal', 'eb-tingle-modal'],
-      onOpen: function() {},
-      onClose: function() {},
-      beforeClose: function() {
-        return true; // close the modal
-    }
-  });
-
-  for(var i = 0; i < openBtns.length; i++) {
-    openBtns[i].addEventListener('click', function(evt) {
-      console.log(123)
-      evt.stopPropagation();
-      evt.preventDefault();
-
-      const content = document.querySelector('[data-eb-modal="' + this.dataset.ebEid + '"]').innerHTML;
-
-      modal.setContent(content);
-      modal.open();
+    modal.on('click', function(el) {
+      modal.removeClass('eb-modal-container--open');
     });
-  }
+
+    openBtns.on('click', function() {
+      modal.addClass('eb-modal-container--open');
+    });
+
+    closeBtns.on('click', function() {
+      modal.removeClass('eb-modal-container--open');
+    });
   }
 
   // Make sure you run this code under Elementor.

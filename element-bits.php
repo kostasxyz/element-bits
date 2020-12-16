@@ -106,6 +106,7 @@ function elbits_init() {
         require ELBITS_PATH . 'widgets/eb-menu-icon-button.php';
         require ELBITS_PATH . 'widgets/eb-google-map.php';
         require ELBITS_PATH . 'widgets/eb-image-hover.php';
+        require ELBITS_PATH . 'widgets/eb-weather.php';
     } );
 
     // Register widgets
@@ -119,6 +120,7 @@ function elbits_init() {
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Menu_Icon_Button() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Google_Map() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Image_Hover() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Weather() );
     } );
 
     // Front end scripts/styles
@@ -127,6 +129,9 @@ function elbits_init() {
         wp_enqueue_script( 'element-bits', ELBITS_URL . 'assets/js/element-bits.js', [ 'jquery' ], ELBITS_VERSION, true );
 
         wp_register_script( 'eb-accordion-menu', ELBITS_URL . 'assets/js/eb-accordion-menu.js', ['element-bits'], ELBITS_VERSION);
+
+        wp_register_script( 'eb-weather', ELBITS_URL . 'assets/js/eb-weather.js', ['element-bits'], ELBITS_VERSION);
+        wp_register_style( 'weather-icons', ELBITS_URL . 'assets/css/weather-icons.css', [ 'element-bits' ], ELBITS_VERSION );
 
         wp_register_script( 'tingle', ELBITS_URL . 'assets/vendor/tingle/tingle.min.js', [], ELBITS_VERSION);
         wp_register_style( 'tingle', ELBITS_URL . 'assets/vendor/tingle/tingle.min.css', [ 'element-bits' ], ELBITS_VERSION );

@@ -64,7 +64,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
      * @return array Widget scripts dependencies.
      */
     public function get_script_depends() {
-        return [ 'tingle', 'eb-wpml-lang-switch' ];
+        return [ 'eb-wpml-lang-switch' ];
     }
 
     /**
@@ -75,7 +75,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
      * @return array Widget scripts dependencies.
      */
     public function get_style_depends() {
-        return [ 'tingle', 'eb-elements' ];
+        return [ 'eb-elements' ];
     }
 
     /**
@@ -194,7 +194,6 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 'options' => [
                     'grid'  => __( 'Grid only flags', 'element-bits' ),
                     'list' => __( 'List flags and names', 'element-bits' ),
-                    'list_names' => __( 'List only names(code)', 'element-bits' ),
                 ],
             ]
         );
@@ -223,6 +222,99 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'overlay_color',
+            [
+                'label' => __( 'Overlay Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,0.6)',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-modal-overlay' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'lang_list_bg_hover_color',
+            [
+                'label' => __( 'Language List BG Hover Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#eee',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-lang-switch-lang-item:hover' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'lang_list_color',
+            [
+                'label' => __( 'Language List Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#000',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-lang-switch-lang-item' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'lang_list_hover_color',
+            [
+                'label' => __( 'Language List Hover Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#000',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-lang-switch-lang-item:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'modal_box_shadow',
+                'label' => __( 'Modal Box Shadow', 'element-bits' ),
+                'selector' => '{{WRAPPER}} .eb-modal',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'handle_typo',
+                'label' => __( 'Handle Typography', 'element-bits' ),
+                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-lang-switch-handle',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'lang_list_typo',
+                'label' => __( 'Lang List Typography', 'element-bits' ),
+                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-lang-switch-lang-item',
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -248,28 +340,22 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
         <div class="eb-lang-switch" data-eb-eid="<?php echo esc_attr( $this->get_id() ); ?>">
             <?php if( $langs = $this->langs() ) : ?>
 
-                <?php if( $settings['display_content'] !== 'lang_links' ) : ?>
-                    <?php $this->display_lang_switch(); ?>
+                <?php $this->display_lang_switch(); ?>
 
-                    <div
-                        class="eb-lang-switch-modal eb-modal-box"
-                        data-eb-modal="<?php echo esc_attr( $this->get_id() ); ?>"
-                        aria-hidden="true"
-                        role="dialog"
-                        aria-modal="true">
-                        <h4 class="eb-lang-switch-modal-title"><?php _e( 'Languages', 'element-bits' ); ?></h4>
-
-                        <?php $this->display_language_links(); ?>
-                    </div>
-                <?php else : ?>
-                    <?php $this->display_language_links(); ?>
-                <?php endif; ?>
+                <?php $this->display_language_links(); ?>
 
             <?php else : ?>
                 <p>WPML is not installed</p>
             <?php endif; ?>
         </div>
         <?php
+    }
+
+    /**
+     * Render icon list
+     */
+    private function render_icon_list($settings) {
+
     }
 
     /**
@@ -286,50 +372,44 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 'eb-wpml-lang-switch-list--' . $settings['lang_list_style'],
             ]
         ]);
-
-        if( $settings['lang_list_style'] == 'list' || $settings['lang_list_style'] == 'list_names' ) :
         ?>
-            <ul <?php echo $this->get_render_attribute_string( 'ul-list' ); ?>>
-                <?php foreach ( $this->langs() as $l ) : ?>
-                    <li>
-                        <a
-                            href="<?php echo esc_url( $l['url'] ); ?>"
-                            class="eb-lang-switch-handle"
-                            data-eb-eid="<?php echo esc_attr( $this->get_id() ); ?>">
-                            <span>
-                                <?php echo esc_attr( $l['translated_name'] ); ?>
-                                (<?php echo strtoupper( esc_attr( $l['language_code'] ) ); ?>)
-                            </span>
-
-                            <?php if( $settings['lang_list_style'] == 'list' ) : ?>
-                                <img
-                                class="eb-lang-switch-flag <?php echo $settings['flag_style'] == 'circle' ? 'eb-lang-switch-flag-circle' : null; ?>"
-                                style="width:<?php echo esc_attr( $settings['flags_width'] ); ?>px"
-                                src="<?php echo esc_url( get_theme_file_uri( './assets/svg/flags/'.$settings['flag_style'].'/'.$l['language_code'].'.svg' )); ?>"
-                                    alt="Country flag for <?php esc_attr( $l['native_name'] ); ?>"/>
-                            <?php endif; ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-
-        <?php if( $settings['lang_list_style'] == 'grid' ) : ?>
-            <div class="eb-wpml-lang-switch-grid">
-                <?php foreach ( $this->langs() as $l ) : ?>
-                    <a
-                        href="<?php echo esc_url( $l['url'] ); ?>"
-                        class="eb-lang-switch-handle"
-                        data-eb-eid="<?php echo esc_attr( $this->get_id() ); ?>">
-                        <img
-                            class="eb-lang-switch-flag <?php echo $settings['flag_style'] == 'circle' ? 'eb-lang-switch-flag-circle' : null; ?>"
-                            style="width:<?php echo esc_attr( $settings['flags_width'] ); ?>px"
-                            src="<?php echo esc_url( get_theme_file_uri( './assets/svg/flags/'.$settings['flag_style'].'/'.$l['language_code'].'.svg' )); ?>"
-                            alt="Country flag for <?php esc_attr( $l['native_name'] ); ?>"/>
-                    </a>
-                <?php endforeach; ?>
+        <div class="eb-modal-container ebjs-modal-container">
+            <div class="eb-modal-overlay"></div>
+            <div class="eb-modal">
+                <span class="eb-modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 496.096 496.096" width="18">
+                        <g>
+                            <path fill="#000000" d="M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686    L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342    c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31    l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z"/>
+                        </g>
+                    </svg>
+                </span>
+                <div class="modal-body">
+                    <ul <?php echo $this->get_render_attribute_string( 'ul-list' ); ?>>
+                        <?php foreach ( $this->langs() as $l ) : ?>
+                            <li>
+                                <a
+                                    href="<?php echo esc_url( $l['url'] ); ?>"
+                                    class="eb-lang-switch-lang-item"
+                                    data-eb-eid="<?php echo esc_attr( $this->get_id() ); ?>">
+                                    <img
+                                        class="eb-lang-switch-flag <?php echo $settings['flag_style'] == 'circle' ? 'eb-lang-switch-flag-circle' : null; ?>"
+                                        style="width:<?php echo esc_attr( $settings['flags_width'] ); ?>px"
+                                        src="<?php echo esc_url( get_theme_file_uri( './assets/svg/flags/'.$settings['flag_style'].'/'.$l['language_code'].'.svg' )); ?>"
+                                        alt="Country flag for <?php esc_attr( $l['native_name'] ); ?>"/>
+                                    <?php if( $settings['lang_list_style'] == 'list' ) : ?>
+                                        <span>
+                                            <?php echo esc_attr( $l['native_name'] ); ?>
+                                            (<?php echo strtoupper( esc_attr( $l['language_code'] ) ); ?>)
+                                        </span>
+                                    <?php endif; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
-        <?php endif;
+        </div>
+        <?php
     }
 
     /**
@@ -346,7 +426,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 <?php if( $l['active'] ) : ?>
                     <a
                         href="#"
-                        class="eb-lang-switch-handle ntrjs-eb-lang-switch-handle"
+                        class="eb-lang-switch-handle ebjs-lang-switch-modal-open"
                         data-eb-eid="<?php echo esc_attr( $this->get_id() ); ?>"
                         style="justify-content:<?php echo esc_attr( $settings['handle_align'] ); ?>">
 
@@ -362,7 +442,6 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                                 src="<?php echo esc_url( get_theme_file_uri( './assets/svg/flags/'.$settings['flag_style'].'/'.$l['language_code'].'.svg' )); ?>"
                                 alt="Country flag for <?php esc_attr( $l['translated_name'] ); ?>"/>
                         <?php endif; ?>
-
                     </a>
                 <?php endif; ?>
             <?php endforeach; ?>
