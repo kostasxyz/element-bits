@@ -109,6 +109,16 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
             ]
         );
 
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'content_section_main_menu',
+            [
+                'label' => __( 'Main menu', 'element-bits' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
         $this->add_control(
 			'link_color',
 			[
@@ -123,7 +133,7 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 				],
 			]
         );
-        
+
         $this->add_control(
 			'link_color_hover',
 			[
@@ -138,7 +148,23 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 				],
 			]
         );
-        
+
+        $this->add_control(
+            'link_bg_color_hover',
+            [
+                'label' => __( 'Link BG hover color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,0)',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:hover' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
         $this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
@@ -148,24 +174,38 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 				'selector' => '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link',
 			]
         );
-        
+
         $this->add_control(
-			'link_decor_color',
-			[
-				'label' => __( 'Link hover decor color', 'element-bits' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:after' => 'background: {{VALUE}}',
-				],
-			]
+            'hr', [ 'type' => \Elementor\Controls_Manager::DIVIDER, ]
+        );
+
+        $this->add_control(
+            'nav_link_display',
+            [
+                'label' => __( 'Main Nav Link diplay', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'block',
+                'options' => [
+                    'block'  => __( 'Block', 'element-bits' ),
+                    'inline-block' => __( 'Inline', 'element-bits' ),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link' => 'display: {{VALUE}}',
+                ],
+            ]
         );
 
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'content_section_sub_menu',
+            [
+                'label' => __( 'Sub menu', 'element-bits' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**

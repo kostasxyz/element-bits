@@ -88,10 +88,11 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
      */
     protected function _register_controls() {
 
+        // Display
         $this->start_controls_section(
-            'content_section',
+            'content_section_display',
             [
-                'label' => __( 'Content', 'element-bits' ),
+                'label' => __( 'Display', 'element-bits' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -110,9 +111,33 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
         );
 
         $this->add_control(
+            'flag_style',
+            [
+                'label' => __( 'Flag Style', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'rounded',
+                'options' => [
+                    'rounded'  => __( 'Rounded', 'element-bits' ),
+                    'circle' => __( 'Circle', 'element-bits' ),
+                ],
+            ]
+        );
+
+        $this->end_controls_section(); // Display
+
+        // Handle
+        $this->start_controls_section(
+            'content_section_handle',
+            [
+                'label' => __( 'Handle', 'element-bits' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
             'handle',
             [
-                'label' => __( 'Choose handle', 'element-bits' ),
+                'label' => __( 'Choose handle style', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'flag' => [
@@ -130,22 +155,6 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 ],
                 'default' => 'flag',
                 'toggle' => true,
-            ]
-        );
-
-        $this->add_control(
-            'handle_color',
-            [
-                'label' => __( 'Handle Color', 'element-bits' ),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#222',
-                'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .eb-lang-switch-handle' => 'color: {{VALUE}}',
-                ],
             ]
         );
 
@@ -172,16 +181,148 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'flag_style',
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Flag Style', 'element-bits' ),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'rounded',
-                'options' => [
-                    'rounded'  => __( 'Rounded', 'element-bits' ),
-                    'circle' => __( 'Circle', 'element-bits' ),
+                'name' => 'handle_typo',
+                'label' => __( 'Handle Typography', 'element-bits' ),
+                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-lang-switch-handle',
+            ]
+        );
+
+        $this->add_control(
+            'handle_color',
+            [
+                'label' => __( 'Handle Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#222',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
                 ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-lang-switch-handle' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'handle_flag_width',
+            [
+                'label' => __( 'Handle flag width', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 10,
+                'max' => 100,
+                'step' => 1,
+                'default' => 32,
+            ]
+        );
+
+        $this->end_controls_section(); // Handle
+
+        // Modal
+        $this->start_controls_section(
+            'content_section_modal',
+            [
+                'label' => __( 'Modal', 'element-bits' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'overlay_color',
+            [
+                'label' => __( 'Overlay Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,0.6)',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-modal-overlay' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'modal_box_shadow',
+                'label' => __( 'Modal Box Shadow', 'element-bits' ),
+                'selector' => '{{WRAPPER}} .eb-modal',
+            ]
+        );
+
+        $this->add_control(
+            'modal_bg_color',
+            [
+                'label' => __( 'Modal BG Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-modal' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'modal_border',
+                'label' => __( 'Modal Border', 'element-bits' ),
+                'selector' => '{{WRAPPER}} .eb-modal',
+            ]
+        );
+
+        $this->add_control(
+            'modal_border_radius',
+            [
+                'label' => __( 'Modal Border Radius', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-modal' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'modal_close_color',
+            [
+                'label' => __( 'Modal Close btn Color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#000',
+                'scheme' => [
+                    'type' => \Elementor\Scheme_Color::get_type(),
+                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'lang_list_typo',
+                'label' => __( 'Lang List Typography', 'element-bits' ),
+                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-lang-switch-lang-item',
+            ]
+        );
+
+        $this->end_controls_section(); // Modal
+
+        // Lang list
+        $this->start_controls_section(
+            'content_section_lang_list',
+            [
+                'label' => __( 'Modal Lang list', 'element-bits' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
@@ -199,18 +340,6 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
         );
 
         $this->add_control(
-            'handle_flag_width',
-            [
-                'label' => __( 'Handle flag width', 'element-bits' ),
-                'type' => \Elementor\Controls_Manager::NUMBER,
-                'min' => 10,
-                'max' => 100,
-                'step' => 1,
-                'default' => 32,
-            ]
-        );
-
-        $this->add_control(
             'flags_width',
             [
                 'label' => __( 'Language flags width', 'element-bits' ),
@@ -219,22 +348,6 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 'max' => 100,
                 'step' => 1,
                 'default' => 64,
-            ]
-        );
-
-        $this->add_control(
-            'overlay_color',
-            [
-                'label' => __( 'Overlay Color', 'element-bits' ),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => 'rgba(0,0,0,0.6)',
-                'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .eb-modal-overlay' => 'background: {{VALUE}}',
-                ],
             ]
         );
 
@@ -286,36 +399,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'modal_box_shadow',
-                'label' => __( 'Modal Box Shadow', 'element-bits' ),
-                'selector' => '{{WRAPPER}} .eb-modal',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'handle_typo',
-                'label' => __( 'Handle Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .eb-lang-switch-handle',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'lang_list_typo',
-                'label' => __( 'Lang List Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .eb-lang-switch-lang-item',
-            ]
-        );
-
-        $this->end_controls_section();
+        $this->end_controls_section(); // Lang list
     }
 
     private function langs() {
@@ -379,7 +463,9 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 <span class="eb-modal-close">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 496.096 496.096" width="18">
                         <g>
-                            <path fill="#000000" d="M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686    L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342    c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31    l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z"/>
+                            <path
+                                fill="<?php echo esc_attr( $settings['modal_close_color'] ); ?>"
+                                d="M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686    L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342    c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31    l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z"/>
                         </g>
                     </svg>
                 </span>
