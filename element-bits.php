@@ -107,6 +107,7 @@ function elbits_init() {
         require ELBITS_PATH . 'widgets/eb-google-map.php';
         require ELBITS_PATH . 'widgets/eb-image-hover.php';
         require ELBITS_PATH . 'widgets/eb-weather.php';
+        require ELBITS_PATH . 'widgets/eb-novel-powered.php';
     } );
 
     // Register widgets
@@ -121,6 +122,7 @@ function elbits_init() {
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Google_Map() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Image_Hover() );
         $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Weather() );
+        $widgets_manager->register_widget_type( new \ElementBits\Widgets\Novel_Powered() );
     } );
 
     // Front end scripts/styles
