@@ -82,7 +82,6 @@ class EB_Whapi_Offers extends EB_Widget_Base {
         $settings = $this->get_settings_for_display();
 
         if(
-            $settings['property_code'] != '' &&
             $settings['user'] != '' &&
             $settings['key'] != '' &&
             $settings['dummy'] != 'yes' )
@@ -95,7 +94,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                 )
             );
 
-            $offers_api_url = esc_url( 'https://rest.reserve-online.net/offers/' . $settings['property_code'] );
+            $offers_api_url = esc_url( 'https://rest.reserve-online.net/offers' . ( $settings['property_code'] ? '/' . $settings['property_code'] : '' ) );
 
             $response = wp_remote_request( $offers_api_url, $args );
 
@@ -230,6 +229,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                 'label' => __( 'Property Code', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => __( '', 'element-bits' ),
+                'description' => __( 'Leave blank for collection offers', 'element-bits' ),
                 'condition'    => [
                     'dummy' => '',
                 ],
