@@ -347,11 +347,13 @@
   z-index: -10;
   opacity: 0;
   transition: all 0.4s;
+  visibility: hidden;
 }
 
 .eb-modal-container--open {
   z-index: 10004;
   opacity: 1;
+  visibility: initial;
 }
 
 .eb-modal-overlay {
