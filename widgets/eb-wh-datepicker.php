@@ -109,7 +109,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				],
 			]
         );
-        
+
 		$this->add_control(
 			'cal_icon',
 			[
@@ -133,7 +133,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
         );
-        
+
 		$this->add_control(
 			'height',
 			[
@@ -167,8 +167,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Border color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#ddd',
                 'selectors' => [
@@ -186,7 +186,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'selector' => '{{WRAPPER}} .eb-datepicker-container',
 			]
 		);
-                
+
         $this->end_controls_section();
 
         //----------------------------------------------------
@@ -205,8 +205,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Label Color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -214,13 +214,13 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				],
 			]
         );
-        
+
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'label_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-datepicker-field-label',
 			]
 		);
@@ -243,8 +243,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Date Color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -252,17 +252,17 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                 ]
 			]
         );
-        
+
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'date_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .eb-datepicker-field-display-typo' 
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-datepicker-field-display-typo'
 			]
         );
-        
+
 		$this->add_control(
 			'date_v_pos',
 			[
@@ -290,7 +290,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
         );
-        
+
 
 		$this->add_control(
 			'cal_color',
@@ -298,13 +298,13 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Icon Color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#999',
 			]
 		);
-        
+
 		$this->add_control(
 			'cal_height',
 			[
@@ -336,8 +336,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Text', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#eee',
                 'selectors' => [
@@ -352,8 +352,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Text hover', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#eee',
                 'selectors' => [
@@ -368,8 +368,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Background', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -384,8 +384,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 				'label' => __( 'Background hover', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -393,17 +393,17 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                 ]
 			]
         );
-        
+
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'button_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .eb-datepicker-field-book-btn a' 
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-datepicker-field-book-btn a'
 			]
 		);
-        
+
         $this->end_controls_section();
     }
 

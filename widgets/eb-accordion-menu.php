@@ -125,8 +125,8 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 				'label' => __( 'Link color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link' => 'color: {{VALUE}}',
@@ -140,8 +140,8 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 				'label' => __( 'Link hover color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:hover' => 'color: {{VALUE}}',
@@ -156,8 +156,8 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,0)',
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:hover' => 'background-color: {{VALUE}}',
@@ -170,7 +170,7 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 			[
 				'name' => 'link_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link',
 			]
         );

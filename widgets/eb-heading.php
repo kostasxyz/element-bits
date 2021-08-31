@@ -132,8 +132,8 @@ class EB_Heading extends EB_Widget_Base {
                 'label' => __( 'Heading Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-heading-heading' => 'color: {{VALUE}}',
@@ -147,7 +147,7 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'name' => 'heading_typo',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-heading-heading',
             ]
         );
@@ -229,8 +229,8 @@ class EB_Heading extends EB_Widget_Base {
                 'label' => __( 'Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-heading-heading-part' => 'color: {{VALUE}}',
@@ -243,7 +243,7 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'name' => 'heading_words_typo',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-heading-heading-part',
             ]
         );
@@ -276,8 +276,8 @@ class EB_Heading extends EB_Widget_Base {
                 'label' => __( 'SubHeading Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-heading-subheading' => 'color: {{VALUE}}',
@@ -312,7 +312,7 @@ class EB_Heading extends EB_Widget_Base {
                 'name' => 'subheading_typo',
                 'type' => 'text_shadow',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-heading-subheading',
             ]
         );
@@ -394,8 +394,8 @@ class EB_Heading extends EB_Widget_Base {
                 'label' => __( 'Separator Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#222',
                 'selectors' => [
@@ -504,8 +504,8 @@ class EB_Heading extends EB_Widget_Base {
                 'label' => __( 'Icon Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'default' => '#222',
                 'selectors' => [
@@ -540,7 +540,7 @@ class EB_Heading extends EB_Widget_Base {
 				],
 			]
 		);
-        
+
         $this->add_responsive_control(
             'sep_icon_align',
             [

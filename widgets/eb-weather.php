@@ -129,8 +129,8 @@ class EB_Weather extends EB_Widget_Base {
                 'label' => __( 'Icon Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-weather-icon' => 'color: {{VALUE}}',
@@ -187,8 +187,8 @@ class EB_Weather extends EB_Widget_Base {
                 'label' => __( 'Text Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-weather-temp' => 'color: {{VALUE}}',
@@ -201,7 +201,7 @@ class EB_Weather extends EB_Widget_Base {
             [
                 'name' => 'temp_typography',
                 'label' => __( 'Text Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-weather-temp',
             ]
         );

@@ -325,7 +325,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'name' => 'h_typography',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .ntr-whapi-offer-title',
             ]
         );
@@ -336,8 +336,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                 'label' => __( 'Title Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-title a' => 'color: {{VALUE}}',
@@ -351,8 +351,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                 'label' => __( 'Title Color Hover', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-title:hover a' => 'color: {{VALUE}}',
@@ -392,8 +392,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                 'label' => __( 'Info labels Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-whoffers-meta-labels' => 'color: {{VALUE}}',
@@ -433,8 +433,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
                 'label' => __( 'Price Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-price' => 'color: {{VALUE}}',

@@ -87,8 +87,8 @@ class Novel_Powered extends EB_Widget_Base {
                 'label' => __( 'Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-novelp-text' => 'color: {{VALUE}}',
@@ -101,7 +101,7 @@ class Novel_Powered extends EB_Widget_Base {
             [
                 'name' => 'text_typo',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-novelp-text',
                 'fields_options' => [
                     'font_size' => [ 'default' => [ 'unit' => 'px', 'size' => 13 ] ]
@@ -141,8 +141,8 @@ class Novel_Powered extends EB_Widget_Base {
                 'label' => __( 'Logo Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
-                    'type' => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-novel-text-logo' => 'fill: {{VALUE}}',
