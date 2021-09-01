@@ -124,6 +124,7 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 			[
 				'label' => __( 'Link color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,1)',
 				'scheme' => [
 					'type' => \Elementor\Core\Schemes\Color::get_type(),
 					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
@@ -139,6 +140,7 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 			[
 				'label' => __( 'Link hover color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,1)',
 				'scheme' => [
 					'type' => \Elementor\Core\Schemes\Color::get_type(),
 					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
@@ -202,6 +204,92 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
             [
                 'label' => __( 'Sub menu', 'element-bits' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'subm_link_color',
+            [
+                'label' => __( 'Link color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,1)',
+                'scheme' => [
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'subm_link_color_hover',
+            [
+                'label' => __( 'Link hover color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,1)',
+                'scheme' => [
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'subm_link_bg_color_hover',
+            [
+                'label' => __( 'Link BG hover color', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(0,0,0,0)',
+                'scheme' => [
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item:hover' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'subm_link_typography',
+                'label' => __( 'Typography', 'element-bits' ),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'subm_padding',
+            [
+                'label' => __( 'Padding', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-menu--dropdown' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'subm_bg',
+            [
+                'label' => __( 'Submenu background', 'element-bits' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                ],
+                'default' => 'rgba(0,0,0,0)',
+                'selectors' => [
+                    '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-menu--dropdown' => 'background-color: {{VALUE}}',
+                ],
             ]
         );
 
