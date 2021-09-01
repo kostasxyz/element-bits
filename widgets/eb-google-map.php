@@ -266,6 +266,4 @@ class EB_Google_Map extends EB_Widget_Base {
         </div>
         <?php
     }
-
-    protected function _content_template() {}
 }
