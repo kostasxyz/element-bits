@@ -370,7 +370,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                     'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .eb-lang-switch-lang-item:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .eb-lang-switch-lang-link:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -451,10 +451,10 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 <div class="modal-body">
                     <ul <?php echo $this->get_render_attribute_string( 'ul-list' ); ?>>
                         <?php foreach ( $this->langs() as $l ) : ?>
-                            <li>
+                            <li class="eb-lang-switch-lang-item">
                                 <a
                                     href="<?php echo esc_url( $l['url'] ); ?>"
-                                    class="eb-lang-switch-lang-item"
+                                    class="eb-lang-switch-lang-link"
                                     data-eb-eid="<?php echo esc_attr( $this->get_id() ); ?>">
                                     <img
                                         class="eb-lang-switch-flag <?php echo $settings['flag_style'] == 'circle' ? 'eb-lang-switch-flag-circle' : null; ?>"

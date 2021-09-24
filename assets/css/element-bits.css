@@ -415,21 +415,31 @@
   display: inline-block;
 }
 
-.eb-wpml-lang-switch-list > li {
+.eb-wpml-lang-switch-list > .eb-lang-switch-lang-item {
   margin-bottom: .725rem;
   transition: all 0.3s;
 }
 
-.eb-wpml-lang-switch-list > li:hover {
-  transform: translateY(-4px);
+.eb-wpml-lang-switch-list:not(.eb-wpml-lang-switch-list--list) > .eb-lang-switch-lang-item:hover {
+  transform: translateY(-3px);
 }
 
-.eb-wpml-lang-switch-list > li a {
+.eb-wpml-lang-switch-list--list > .eb-lang-switch-lang-item:hover {
+  transform: translateX(3px);
+}
+
+.eb-wpml-lang-switch-list > .eb-lang-switch-lang-item .eb-lang-switch-lang-link {
   display: block;
   padding: 0.5rem 0.75rem;
 }
 
-.eb-wpml-lang-switch-list > li a span {
+.eb-lang-switch-lang-link,
+.eb-lang-switch-lang-item,
+.eb-lang-switch-lang-item:hover {
+  background: none!important;
+}
+
+.eb-lang-switch-lang-link span {
   margin-left: 8px;
 }
 
