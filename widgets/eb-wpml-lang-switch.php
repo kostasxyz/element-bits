@@ -88,25 +88,12 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
      */
     protected function _register_controls() {
 
-        // Display
+        // Handle
         $this->start_controls_section(
-            'content_section_display',
+            'content_section_handle',
             [
-                'label' => __( 'Display', 'element-bits' ),
+                'label' => __( 'Handle', 'element-bits' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'display_content',
-            [
-                'label' => __( 'Display type', 'element-bits' ),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'switch_popup',
-                'options' => [
-                    'switch_popup'  => __( 'Switch and popup', 'element-bits' ),
-                    'lang_links' => __( 'Lang list only', 'element-bits' ),
-                ],
             ]
         );
 
@@ -123,17 +110,6 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             ]
         );
 
-        $this->end_controls_section(); // Display
-
-        // Handle
-        $this->start_controls_section(
-            'content_section_handle',
-            [
-                'label' => __( 'Handle', 'element-bits' ),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
         $this->add_control(
             'handle',
             [
@@ -142,15 +118,15 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 'options' => [
                     'flag' => [
                         'title' => __( 'Flag', 'element-bits' ),
-                        'icon' => 'fa fa-flag',
+                        'icon' => 'eicon-map-pin',
                     ],
                     'code' => [
                         'title' => __( 'Code', 'element-bits' ),
-                        'icon' => 'fa fa-language',
+                        'icon' => 'eicon-code',
                     ],
                     'flag_code' => [
                         'title' => __( 'Flag & Code', 'element-bits' ),
-                        'icon' => 'fa fa-globe',
+                        'icon' => 'eicon-globe',
                     ],
                 ],
                 'default' => 'flag',
@@ -166,15 +142,15 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                 'options' => [
                     'flex-start' => [
                         'title' => __( 'Left', 'element-bits' ),
-                        'icon' => 'fa fa-align-left',
+                        'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
                         'title' => __( 'Center', 'element-bits' ),
-                        'icon' => 'fa fa-align-center',
+                        'icon' => 'eicon-text-align-center',
                     ],
                     'flex-end' => [
                         'title' => __( 'Right', 'element-bits' ),
-                        'icon' => 'fa fa-align-right',
+                        'icon' => 'eicon-text-align-right',
                     ],
                 ],
                 'default' => 'left',
@@ -351,21 +327,21 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'lang_list_bg_hover_color',
-            [
-                'label' => __( 'Language List BG Hover Color', 'element-bits' ),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#eee',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .eb-lang-switch-lang-item:hover' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
+        // $this->add_control(
+        //     'lang_list_bg_hover_color',
+        //     [
+        //         'label' => __( 'Language List BG Hover Color', 'element-bits' ),
+        //         'type' => \Elementor\Controls_Manager::COLOR,
+        //         'default' => '#f7f7f7',
+        //         'scheme' => [
+        //             'type' => \Elementor\Core\Schemes\Color::get_type(),
+        //             'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+        //         ],
+        //         'selectors' => [
+        //             '{{WRAPPER}} .eb-lang-switch-lang-item:hover' => 'background: {{VALUE}}',
+        //         ],
+        //     ]
+        // );
 
         $this->add_control(
             'lang_list_color',
@@ -460,15 +436,18 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
         <div class="eb-modal-container ebjs-modal-container">
             <div class="eb-modal-overlay"></div>
             <div class="eb-modal">
-                <span class="eb-modal-close">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 496.096 496.096" width="18">
-                        <g>
-                            <path
-                                fill="<?php echo esc_attr( $settings['modal_close_color'] ); ?>"
-                                d="M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686    L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342    c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31    l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z"/>
-                        </g>
-                    </svg>
-                </span>
+                <div class="eb-modal-header">
+                    <h4><?php _e( 'Select your language', 'element-bits' ); ?></h4>
+                    <div class="eb-modal-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 496.096 496.096" width="18">
+                            <g>
+                                <path
+                                    fill="<?php echo esc_attr( $settings['modal_close_color'] ); ?>"
+                                    d="M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686    L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342    c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31    l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
                 <div class="modal-body">
                     <ul <?php echo $this->get_render_attribute_string( 'ul-list' ); ?>>
                         <?php foreach ( $this->langs() as $l ) : ?>
@@ -480,8 +459,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                                     <img
                                         class="eb-lang-switch-flag <?php echo $settings['flag_style'] == 'circle' ? 'eb-lang-switch-flag-circle' : null; ?>"
                                         style="width:<?php echo esc_attr( $settings['flags_width'] ); ?>px"
-                                        src="<?php echo esc_url( get_theme_file_uri( './assets/svg/flags/'.$settings['flag_style'].'/'.$l['language_code'].'.svg' )); ?>"
-                                        alt="Country flag for <?php esc_attr( $l['native_name'] ); ?>"/>
+                                        src="<?php echo esc_url( ELBITS_URL . 'assets/svg/flags/' . $settings['flag_style'] . '/' .$l['language_code'] . '.svg' ); ?>"
+                                        alt="Language flag for <?php echo esc_attr( $l['native_name'] ); ?>"/>
                                     <?php if( $settings['lang_list_style'] == 'list' ) : ?>
                                         <span>
                                             <?php echo esc_attr( $l['native_name'] ); ?>
@@ -525,8 +504,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
                             <img
                                 class="eb-lang-switch-flag <?php echo $settings['flag_style'] == 'circle' ? 'eb-lang-switch-flag-circle' : null; ?>"
                                 style="width:<?php echo esc_attr( $settings['handle_flag_width'] ); ?>px"
-                                src="<?php echo esc_url( get_theme_file_uri( './assets/svg/flags/'.$settings['flag_style'].'/'.$l['language_code'].'.svg' )); ?>"
-                                alt="Country flag for <?php esc_attr( $l['translated_name'] ); ?>"/>
+                                src="<?php echo esc_url( ELBITS_URL . 'assets/svg/flags/' . $settings['flag_style'] . '/' .$l['language_code'] . '.svg' ); ?>"
+                                alt="Language flag for <?php esc_attr( $l['translated_name'] ); ?>"/>
                         <?php endif; ?>
                     </a>
                 <?php endif; ?>
