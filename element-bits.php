@@ -135,9 +135,7 @@ function elbits_init() {
         wp_register_script( 'eb-weather', ELBITS_URL . 'assets/js/eb-weather.js', ['element-bits'], ELBITS_VERSION);
         wp_register_style( 'weather-icons', ELBITS_URL . 'assets/css/weather-icons.css', [ 'element-bits' ], ELBITS_VERSION );
 
-        wp_register_script( 'tingle', ELBITS_URL . 'assets/vendor/tingle/tingle.min.js', [], ELBITS_VERSION);
-        wp_register_style( 'tingle', ELBITS_URL . 'assets/vendor/tingle/tingle.min.css', [ 'element-bits' ], ELBITS_VERSION );
-        wp_register_script( 'eb-wpml-lang-switch', ELBITS_URL . 'assets/js/eb-wpml-lang-switch.js', ['tingle'], ELBITS_VERSION);
+        wp_register_script( 'eb-wpml-lang-switch', ELBITS_URL . 'assets/js/eb-wpml-lang-switch.js', ['element-bits'], ELBITS_VERSION);
 
         wp_register_style( 'eb-menu-icon-button', ELBITS_URL . 'assets/css/eb-menu-icon-button.css', [ 'element-bits' ], ELBITS_VERSION );
 
