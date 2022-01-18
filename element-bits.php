@@ -108,7 +108,7 @@ function elbits_init() {
         require ELBITS_PATH . 'widgets/eb-image-hover.php';
         require ELBITS_PATH . 'widgets/eb-weather.php';
         require ELBITS_PATH . 'widgets/eb-novel-powered.php';
-        require ELBITS_PATH . 'widgets/acf-repeater-list.php';
+        require ELBITS_PATH . 'widgets/eb-acf-repeater-list.php';
     } );
 
     // Register widgets
