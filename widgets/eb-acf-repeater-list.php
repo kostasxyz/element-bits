@@ -121,6 +121,13 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
 		);
 
 		$this->add_control(
+			'hr',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
 			'icon',
 			[
 				'label' => __( 'Icon', 'element-bits' ),
@@ -210,6 +217,13 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'hr',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
         $this->add_control(
             'text_color',
             [
@@ -229,15 +243,22 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'Typography',
+                'name' => 'text_typo',
                 'label' => __( 'Field 1 Typography', 'element-bits' ),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-text',
             ]
         );
 
+		$this->add_control(
+			'hr',
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
         $this->add_control(
-            'text_color',
+            'text_color_sub',
             [
                 'label' => __( 'Field 1 Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
@@ -255,7 +276,7 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'Typography',
+                'name' => 'subtext_typo',
                 'label' => __( 'Field 2 Typography', 'element-bits' ),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-subtext',
@@ -328,7 +349,7 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
                                 </span>
                                 <span class="<?php echo $css_base_class; ?>-text"><?php echo esc_attr( $field[$settings['acf_subfield1']] ); ?></span>
                                 <?php if( $settings['acf_subfield2'] !==  'none' ) : ?>
-                                    <span class="<?php echo $css_base_class; ?>-subtext"><?php echo esc_attr( $field[$settings['acf_subfield2']] ); ?></span>
+                                    <span class="<?php echo $css_base_class; ?>-subtext"> <?php echo esc_attr( $field[$settings['acf_subfield2']] ); ?></span>
                                 <?php endif; ?>
                             </li>
                         <?php endforeach; ?>
