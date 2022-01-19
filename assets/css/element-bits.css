@@ -467,3 +467,39 @@
   align-items: center;
   justify-content: center;
 }
+
+
+/*
+---------------------------------------------------------
+  ACF SLIDES
+---------------------------------------------------------
+*/
+.eb-widget-swiper-container {
+	width: 100%;
+	overflow: hidden;
+}
+
+.eb-widget-swiper-slide {
+	display: flex;
+    width: 100%!important;
+    overflow: hidden;
+}
+
+.eb-widget-swiper-slide img {
+	width: 100%;
+    object-fit: cover;
+}
+
+.eb-widget-swiper-buttons {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	z-index: 2;
+}
+
+.eb-widget-swiper-buttons button {
+	cursor: pointer;
+}

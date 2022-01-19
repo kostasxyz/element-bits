@@ -55,7 +55,7 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
      * @return array.
      */
     public function get_keywords() {
-        return [ 'entre', 'widget' ];
+        return [ 'entre', 'widget', 'acf', 'eb' ];
     }
 
     public function get_script_depends() {
@@ -66,16 +66,8 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
         return [];
     }
 
-    /**
-     * Register oEmbed widget controls.
-     *
-     * Adds different input fields to allow the user to change and customize the widget settings.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
-    protected function _register_controls() {
 
+    private function register_control_content_section() {
         $this->start_controls_section(
             'content_section',
             [
@@ -120,12 +112,17 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'hr',
+        $this->end_controls_section();
+    }
+
+    private function register_control_style_section_icon() {
+		$this->start_controls_section(
+			'section_style_icon',
 			[
-				'type' => \Elementor\Controls_Manager::DIVIDER,
+				'label' => __( 'Icon', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
-		);
+        );
 
 		$this->add_control(
 			'icon',
@@ -136,6 +133,13 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
 					'value' => 'fas fa-minus',
 					'library' => 'solid',
 				],
+			]
+		);
+
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
 		);
 
@@ -155,6 +159,13 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             ]
         );
 
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
         $this->add_control(
             'align_icon',
             [
@@ -167,6 +178,13 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
                 ],
             ]
         );
+
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
 
 		$this->add_control(
 			'icon_margin',
@@ -185,6 +203,13 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
 					'unit' => 'px',
 					'size' => 10,
 				],
+			]
+		);
+
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
 		);
 
@@ -217,17 +242,22 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'hr',
+        $this->end_controls_section();
+    }
+
+    private function register_control_style_section_text_typo() {
+		$this->start_controls_section(
+			'section_style_text_typo',
 			[
-				'type' => \Elementor\Controls_Manager::DIVIDER,
+				'label' => __( 'Text', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
-		);
+        );
 
         $this->add_control(
             'text_color',
             [
-                'label' => __( 'Field 1 Color', 'element-bits' ),
+                'label' => __( 'Text Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => \Elementor\Core\Schemes\Color::get_type(),
@@ -240,27 +270,39 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'text_typo',
-                'label' => __( 'Field 1 Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-text',
-            ]
-        );
-
 		$this->add_control(
-			'hr',
+			'_' . rand(10000000,99999999),
 			[
 				'type' => \Elementor\Controls_Manager::DIVIDER,
 			]
 		);
 
-        $this->add_control(
-            'text_color_sub',
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Field 1 Color', 'element-bits' ),
+                'name' => 'text_typo',
+                'label' => __( 'Text Typography', 'element-bits' ),
+                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-text',
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    private function register_control_style_section_subtext_typo() {
+		$this->start_controls_section(
+			'section_style_subtext_typo',
+			[
+				'label' => __( 'Subtext', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+        $this->add_control(
+            'subtext_color',
+            [
+                'label' => __( 'Subtext Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => \Elementor\Core\Schemes\Color::get_type(),
@@ -273,17 +315,40 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             ]
         );
 
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'subtext_typo',
-                'label' => __( 'Field 2 Typography', 'element-bits' ),
+                'label' => __( 'Subtext Typography', 'element-bits' ),
                 'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-subtext',
             ]
         );
 
         $this->end_controls_section();
+    }
+
+    /**
+     * Register oEmbed widget controls.
+     *
+     * Adds different input fields to allow the user to change and customize the widget settings.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function _register_controls() {
+
+        $this->register_control_content_section();
+        $this->register_control_style_section_icon();
+        $this->register_control_style_section_text_typo();
+        $this->register_control_style_section_subtext_typo();
 
     }
 
@@ -293,13 +358,14 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             'repeaters' => ['none' => '...'],
             'subfields' => ['none' => '...'],
         ];
+        if($fields) {
+            foreach( $fields as $field ) {
+                if( $field['type'] === 'repeater' ) {
+                    $repeaters['repeaters'][$field['name']] = $field['label'];
 
-        foreach( $fields as $field ) {
-            if( $field['type'] === 'repeater' ) {
-                $repeaters['repeaters'][$field['name']] = $field['label'];
-
-                foreach( $field['sub_fields'] as $sub ) {
-                    $repeaters['subfields'][$sub['name']] = $sub['label'].' ('.$field['label'].')';
+                    foreach( $field['sub_fields'] as $sub ) {
+                        $repeaters['subfields'][$sub['name']] = $sub['label'].' ('.$field['label'].')';
+                    }
                 }
             }
         }
