@@ -187,7 +187,7 @@ class ACF_Gallery_Slides extends EB_Widget_Base {
 		$this->add_control(
 			'next_prev_padding',
 			[
-				'label' => esc_html__( 'Margin', 'plugin-name' ),
+				'label' => esc_html__( 'Buttons padding', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'rem' ],
 				'selectors' => [
