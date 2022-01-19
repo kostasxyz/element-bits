@@ -502,4 +502,25 @@
 
 .eb-widget-swiper-buttons button {
 	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.eb-widget-swiper-buttons button svg {
+	transition: all 0.3s;
+}
+
+.eb-widget-acf-gallery-slides-swiper-prev:not(.eb-widget-acf-gallery-slides-swiper-prev-rotate ):hover svg {
+	transform: translateX(-32px);
+}
+
+.eb-widget-acf-gallery-slides-swiper-prev-rotate svg {
+	transform: rotate(180deg)
+}
+
+.eb-widget-acf-gallery-slides-swiper-prev-rotate:hover svg {
+	transform: translateX(-32px) rotate(180deg);
+}
+
+.eb-widget-acf-gallery-slides-swiper-next:hover svg {
+	transform: translateX(32px);
 }
