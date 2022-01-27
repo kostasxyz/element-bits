@@ -112,6 +112,163 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'list_columns',
+			[
+				'label' => esc_html__( 'Columns', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 10,
+				'step' => 1,
+				'default' => 1,
+			]
+		);
+
+		$this->add_control(
+			'row_align',
+			[
+				'label' => esc_html__( 'Column Align', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'flex-start',
+				'options' => [
+					'flex-start'  => esc_html__( 'Top', 'element-bits' ),
+					'center' => esc_html__( 'Center', 'element-bits' ),
+					'flex-end' => esc_html__( 'Bottom', 'element-bits' ),
+				],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-acf-repeater-list-widget-rows' => 'align-items: {{VALUE}}',
+                ],
+			]
+		);
+
+		$this->add_control(
+			'row_justify',
+			[
+				'label' => esc_html__( 'Column Jusitfy', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'flex-start',
+				'options' => [
+					'flex-start'  => esc_html__( 'Left', 'element-bits' ),
+					'center' => esc_html__( 'Center', 'element-bits' ),
+					'flex-end' => esc_html__( 'Right', 'element-bits' ),
+					'space-between' => esc_html__( 'Between', 'element-bits' ),
+					'space-around' => esc_html__( 'Around', 'element-bits' ),
+				],
+                'selectors' => [
+                    '{{WRAPPER}} .eb-acf-repeater-list-widget-rows' => 'justify-content: {{VALUE}}',
+                ],
+			]
+		);
+
+        $this->end_controls_section();
+    }
+
+    private function register_control_style_section_column() {
+		$this->start_controls_section(
+			'section_style_column',
+			[
+				'label' => __( 'List', 'element-bits' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+        );
+
+		$this->add_responsive_control(
+			'ul_padding',
+			[
+				'label' => esc_html__( 'List padding', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'rem' ],
+				'default' => [
+					'unit' => 'rem',
+					'size' => 1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eb-acf-repeater-list-widget-list' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'ul_margin',
+			[
+				'label' => esc_html__( 'List margin', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'rem' ],
+				'default' => [
+					'unit' => 'rem',
+					'size' => 1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eb-acf-repeater-list-widget-list' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'ul_background',
+				'label' => esc_html__( 'Background', 'element-bits' ),
+				'types' => [ 'classic', 'gradient', 'video' ],
+				'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-list',
+			]
+		);
+
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'list_border',
+				'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-list',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'ul_border_radius',
+			[
+				'label' => esc_html__( 'List Border radius', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .eb-acf-repeater-list-widget-list' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'_' . rand(10000000,99999999),
+			[
+				'type' => \Elementor\Controls_Manager::DIVIDER,
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'ul_shadow',
+				'label' => esc_html__( 'List Shadow', 'element-bits' ),
+				'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-list',
+			]
+		);
+
         $this->end_controls_section();
     }
 
@@ -346,6 +503,7 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
     protected function _register_controls() {
 
         $this->register_control_content_section();
+        $this->register_control_style_section_column();
         $this->register_control_style_section_icon();
         $this->register_control_style_section_text_typo();
         $this->register_control_style_section_subtext_typo();
@@ -386,12 +544,34 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
         $settings = $this->get_settings_for_display();
         $pid = get_the_ID();
         $css_base_class = 'eb-acf-repeater-list-widget';
+        $columns = absint( $settings['list_columns'] );
+
+
+        $repeater_rows = [];
+        if( $repeater_field = get_field( $settings['acf_repeater'] ) ) {
+            $repeater_rows = array_chunk(
+                $repeater_field,
+                absint(
+                    ceil(
+                        count( $repeater_field ) / $columns
+                    )
+                )
+            );
+        }
+
 
         $this->add_render_attribute('icon_wrap', [
 			'class' => [$css_base_class . '-icon'],
 			'style' => [
                 'display: flex; align-items: center;',
                 'margin-' . ($settings['align_icon'] === 'right' ? 'left' : 'right') . ': ' . $settings['icon_margin']['size'].$settings['icon_margin']['unit'] . ';',
+            ],
+		] );
+
+        $this->add_render_attribute('ul', [
+			'class' => [$css_base_class . '-list'],
+			'style' => [
+                'list-style-type: none',
             ],
 		] );
 
@@ -403,24 +583,36 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
                 'flex-direction: ' . ($settings['align_icon'] === 'right' ? 'row-reverse;' : 'row;'),
             ],
 		] );
+
+        $this->add_render_attribute('text', [
+			'class' => [$css_base_class . '-text'],
+			'style' => [
+                'margin-right: 5px',
+            ],
+		] );
         ?>
             <div class="eb-widget-wrapper <?php echo $css_base_class; ?>-wrapper">
-                <?php if( $settings['acf_repeater'] !== 'none' && $settings['acf_subfield1'] !==  'none' ) : ?>
-                    <ul class="<?php echo $css_base_class; ?>-list">
-                    <?php $repeater = get_field( $settings['acf_repeater'] ); ?>
-                        <?php foreach( $repeater as $field ) : ?>
-                            <li <?php echo $this->get_render_attribute_string( 'list_item' ); ?>>
-                                <span <?php echo $this->get_render_attribute_string( 'icon_wrap' ); ?>>
-                                    <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                                </span>
-                                <span class="<?php echo $css_base_class; ?>-text"><?php echo esc_attr( $field[$settings['acf_subfield1']] ); ?></span>
-                                <?php if( $settings['acf_subfield2'] !==  'none' ) : ?>
-                                    <span class="<?php echo $css_base_class; ?>-subtext"> <?php echo esc_attr( $field[$settings['acf_subfield2']] ); ?></span>
-                                <?php endif; ?>
-                            </li>
+                <div style="display: flex;" class="<?php echo $css_base_class; ?>-rows">
+                    <?php if( !empty( $repeater_rows ) && $settings['acf_subfield1'] !==  'none' ) : ?>
+                        <?php foreach( $repeater_rows as $row ) : ?>
+                            <ul <?php echo $this->get_render_attribute_string( 'ul' ); ?>>
+                                <?php foreach( $row as $field ) : ?>
+                                    <li <?php echo $this->get_render_attribute_string( 'list_item' ); ?>>
+                                        <span <?php echo $this->get_render_attribute_string( 'icon_wrap' ); ?>>
+                                            <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                                        </span>
+                                        <span <?php echo $this->get_render_attribute_string( 'text' ); ?>>
+                                            <?php echo esc_attr( $field[$settings['acf_subfield1']] ); echo $columns; ?>
+                                        </span>
+                                        <?php if( $settings['acf_subfield2'] !==  'none' ) : ?>
+                                            <span class="<?php echo $css_base_class; ?>-subtext"> <?php echo esc_attr( $field[$settings['acf_subfield2']] ); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
                         <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         <?php
 
