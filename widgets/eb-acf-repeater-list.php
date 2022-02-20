@@ -517,7 +517,7 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             'subfields' => ['none' => '...'],
         ];
 
-        if ( ! function_exists( '' ) ) {
+        if ( ! function_exists( 'get_field_objects' ) ) {
             return $repeaters;
         }
 
