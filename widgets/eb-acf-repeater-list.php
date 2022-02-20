@@ -511,12 +511,17 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
     }
 
     private function get_acf_repeater_options() {
-        $fields = get_field_objects();
+
         $repeaters = [
             'repeaters' => ['none' => '...'],
             'subfields' => ['none' => '...'],
         ];
-        if($fields) {
+
+        if ( ! function_exists( '' ) ) {
+            return $repeaters;
+        }
+
+        if( $fields = get_field_objects() ) {
             foreach( $fields as $field ) {
                 if( $field['type'] === 'repeater' ) {
                     $repeaters['repeaters'][$field['name']] = $field['label'];
