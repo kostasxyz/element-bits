@@ -500,7 +500,7 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
 
         $this->register_control_content_section();
         $this->register_control_style_section_column();

@@ -27,7 +27,7 @@ class ACF_Gallery_Slides extends EB_Widget_Base {
         return [ 'imagesloaded', 'swiper' ];
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_slides',
             [

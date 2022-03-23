@@ -4,8 +4,8 @@
  * Description: Extra Elementor Widgets
  * Plugin URI: https://noveldigital.pro
  * Author: Kostas Charalampidis
- * Version: 1.0
- * Author URI: https://code42.xyz
+ * Version: 1.1
+ * Author URI: https://noveldigital.pro
  *
  * Text Domain: element-bits
  *
