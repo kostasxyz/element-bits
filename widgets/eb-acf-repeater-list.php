@@ -607,7 +607,7 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
                                             <?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
                                         </span>
                                         <span <?php echo $this->get_render_attribute_string( 'text' ); ?>>
-                                            <?php echo esc_attr( $field[$settings['acf_subfield1']] ); echo $columns; ?>
+                                            <?php echo esc_attr( $field[$settings['acf_subfield1']] ); ?>
                                         </span>
                                         <?php if( $settings['acf_subfield2'] !==  'none' ) : ?>
                                             <span class="<?php echo $css_base_class; ?>-subtext"> <?php echo esc_attr( $field[$settings['acf_subfield2']] ); ?></span>
