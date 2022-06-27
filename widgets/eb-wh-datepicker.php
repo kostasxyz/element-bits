@@ -121,6 +121,30 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			]
         );
 
+		$this->add_control(
+			'def_guests',
+			[
+				'label' => __( 'Default guests', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 100,
+				'step' => 1,
+				'default' => 2,
+			]
+        );
+
+		$this->add_control(
+			'max_guests',
+			[
+				'label' => __( 'Max Guests', 'element-bits' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 100,
+				'step' => 1,
+				'default' => 4,
+			]
+        );
+
         $this->end_controls_section();
 
         //----------------------------------------------
@@ -480,6 +504,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 
         $w_data = [
             'book_url' => $settings['book_url']['url'],
+            'max_guests' => (int)$settings['max_guests'],
+            'def_guests' => (int)$settings['def_guests'],
         ];
         ?>
             <div class="eb-datepicker-wrapper" data-elbits='<?php echo json_encode( $w_data ); ?>'>
@@ -523,7 +549,7 @@ class EB_WH_Datepicker extends EB_Widget_Base {
                             <span class="eb-datepicker-field-label">
                                 <?php _e( 'GUESTS', 'element-bits' ); ?>
                             </span>
-                            <?php echo $this->render_num_field(); ?>
+                            <?php echo $this->render_num_field($w_data['def_guests']); ?>
                         </div>
                     </div>
 
@@ -539,11 +565,11 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 
     }
 
-    public function render_num_field() {
+    public function render_num_field($def_val) {
         return '
             <div class="eb-number-field">
             <span class="eb-number-field-sub">-</span>
-            <span class="eb-number-field-num eb-datepicker-field-display-typo">2</span>
+            <span class="eb-number-field-num eb-datepicker-field-display-typo">'.$def_val.'</span>
             <span class="eb-number-field-add">+</span>
             </div>
         ';

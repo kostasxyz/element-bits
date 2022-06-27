@@ -2,6 +2,7 @@
   var ebDatepickerWidget = function( $scope, $ ) {
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var wrapper            = $scope.find('.eb-datepicker-wrapper');
+    var dataProps          = wrapper.data('elbits');
     var checkinField       = wrapper.find('.eb-datepicker-field-checkin');
     var checkoutField      = wrapper.find('.eb-datepicker-field-checkout');
     var checkinDisplay     = checkinField.find('.eb-datepicker-field-display');
@@ -10,14 +11,10 @@
     var addGuest           = wrapper.find('.eb-number-field-add');
     var subGuest           = wrapper.find('.eb-number-field-sub');
     var guestNum           = wrapper.find('.eb-number-field-num');
-    var guests = 0;
+    var guests             = dataProps.def_guests ?? 2;
 
-    var bookUrl;
-    try {
-      bookUrl = wrapper.data('elbits').book_url;
-    } catch (err) {
-      bookUrl = 'https://myhotel.reserve-online.net';
-    }
+    var bookUrl = dataProps.book_url ?? 'https://myhotel.reserve-online.net';
+
 
     var checkinPicker = checkinField.flatpickr({
       altFormat: "F j, Y",
@@ -113,13 +110,8 @@
     }
 
 
-    function handleGuestChange() {
-
-    }
-
-
     addGuest.on('click', function(ev) {
-      if(guests < 8) {
+      if(guests < dataProps.max_guests ?? 6) {
         guests += 1;
         guestNum.text(guests);
       }
