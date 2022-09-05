@@ -6,10 +6,16 @@
 
   var widget = function( $scope, $ ) {
 
+    $(document)
+
     var menu = $scope.find('ul.menu');
     var parents = menu.find('li.menu-item-has-children');
     var submenus = parents.find('ul.sub-menu');
     var currInd;
+
+    menu.on('click', '.ntr-nav-item:not(.menu-item-has-children) a', function(event) {
+      elementorProFrontend.modules.popup.closePopup( {}, event);
+    });
 
     function toggleInd(val) {
       console.log(val)

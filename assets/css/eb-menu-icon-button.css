@@ -1,6 +1,6 @@
 .eb-menu-icon-btn-wrap {
   position: relative;
-  z-index: 99999;
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
