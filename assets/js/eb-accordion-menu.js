@@ -6,8 +6,6 @@
 
   var widget = function( $scope, $ ) {
 
-    $(document)
-
     var menu = $scope.find('ul.menu');
     var parents = menu.find('li.menu-item-has-children');
     var submenus = parents.find('ul.sub-menu');
@@ -31,16 +29,17 @@
       var links = parents.find('> a');
       var indEl = document.createElement('span');
       indEl.classList.add('eb-accordion-wp-menu-indicator');
-      indEl.innerHTML = '+';
+      indEl.innerHTML = ' +';
       links.append(indEl);
       links.on('click', function(e) {
+        console.log(e)
         e.preventDefault();
-        var curr = $(e.target).next('.sub-menu');
+        var curr = $(e.currentTarget).next('.sub-menu');
         submenus.not(curr).slideUp();
         curr.stop(1,1).slideToggle();
-        links.not(e.target).find('.eb-accordion-wp-menu-indicator').text('+');
-        var ind = $(e.target).find('.eb-accordion-wp-menu-indicator');
-        ind.text(ind.text() == '+' ? '-' : '+');
+        links.not(e.currentTarget).find('.eb-accordion-wp-menu-indicator').text(' +');
+        var ind = $(e.currentTarget).find('.eb-accordion-wp-menu-indicator');
+        ind.text(ind.text() == ' +' ? ' -' : ' +');
       });
     }
   };
