@@ -71,7 +71,7 @@ function elbits_init() {
     new \ElementBits\Clickable_Column();
 
     // Register custom dynamic tags
-    add_action( 'elementor/dynamic_tags/register_tags', function( $dynamic_tags ) {
+    add_action( 'elementor/dynamic_tags/register', function( $dynamic_tags ) {
         \Elementor\Plugin::$instance->dynamic_tags->register_group( 'eb-dynamic-tags', [
             'title' => 'ElementBits'
         ] );
@@ -80,7 +80,7 @@ function elbits_init() {
         include_once ELBITS_PATH . 'dynamic-tags/dynamic-tags.php';
 
         // Register the tag
-        // $dynamic_tags->register_tag( '\ElementBits\Tags\Site_Logo' );
+        // $dynamic_tags->register( new \ElementBits\Tags\Site_Logo );
     } );
 
     // Add widgets
@@ -113,20 +113,20 @@ function elbits_init() {
     } );
 
     // Register widgets
-    add_action( 'elementor/widgets/widgets_registered', function ( $widgets_manager ) {
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Heading() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Accordion_Wp_Menu() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Wpml_Lang_Switch() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Vertical_Sep() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Whapi_Offers() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_WH_Datepicker() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Menu_Icon_Button() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Google_Map() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Image_Hover() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\EB_Weather() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\Novel_Powered() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\ACF_Repeater_List_Widget() );
-        $widgets_manager->register_widget_type( new \ElementBits\Widgets\ACF_Gallery_Slides() );
+    add_action( 'elementor/widgets/register', function ( $widgets_manager ) {
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Heading() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Accordion_Wp_Menu() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Wpml_Lang_Switch() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Vertical_Sep() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Whapi_Offers() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_WH_Datepicker() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Menu_Icon_Button() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Google_Map() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Image_Hover() );
+        $widgets_manager->register( new \ElementBits\Widgets\EB_Weather() );
+        $widgets_manager->register( new \ElementBits\Widgets\Novel_Powered() );
+        $widgets_manager->register( new \ElementBits\Widgets\ACF_Repeater_List_Widget() );
+        $widgets_manager->register( new \ElementBits\Widgets\ACF_Gallery_Slides() );
     } );
 
     // Front end scripts/styles
