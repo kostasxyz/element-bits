@@ -325,7 +325,9 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'name' => 'h_typography',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .ntr-whapi-offer-title',
             ]
         );
@@ -379,7 +381,9 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'meta_typography',
-                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                ],
                 'selector' => '{{WRAPPER}} .eb-whoffers-meta-labels',
             ]
         );
@@ -419,7 +423,9 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'price_typography',
-                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                ],
                 'selector' => '{{WRAPPER}} .ntr-whapi-offer-price',
             ]
         );
@@ -459,7 +465,9 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'typography',
-                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
+                ],
                 'selector' => '{{WRAPPER}} .ntr-whapi-offer-book-btn',
             ]
         );

@@ -585,75 +585,87 @@ class EB_Heading extends EB_Widget_Base {
     protected function render() {
 
         $settings = $this->get_settings_for_display();
-        if( $settings['align'] === 'left') {
+        
+        // Set default alignment if not set
+        $alignment = isset($settings['align']) ? $settings['align'] : 'center';
+        
+        if ($alignment === 'left') {
             $flex_align = 'flex-start';
-        }
-        elseif( $settings['align'] === 'right' ) {
+        } elseif ($alignment === 'right') {
             $flex_align = 'flex-end';
-        }
-        else {
+        } else {
             $flex_align = 'center';
         }
 
-        if( $settings['header_word_to_style'] ) {
+        // Get heading text with optional styled word
+        $heading_text = isset($settings['heading']) ? $settings['heading'] : '';
+        $word_to_style = isset($settings['header_word_to_style']) ? $settings['header_word_to_style'] : '';
+        
+        if ($word_to_style && !empty($heading_text)) {
             $heading = str_ireplace(
-                $settings['header_word_to_style'],
-                '<span class="eb-heading-heading-part">'.$settings['header_word_to_style'].'</span>',
-                $settings['heading']
+                $word_to_style,
+                '<span class="eb-heading-heading-part">' . $word_to_style . '</span>',
+                $heading_text
             );
-        }
-        else {
-            $heading = $settings['heading'];
+        } else {
+            $heading = $heading_text;
         }
 
-        $h_tag = $settings['heading_tag'] ?: 'h3';
+        // Get heading tag with default
+        $h_tag = isset($settings['heading_tag']) ? $settings['heading_tag'] : 'h3';
+
+        // Get other settings with defaults
+        $show_sep_icon = isset($settings['show_sep_icon']) ? $settings['show_sep_icon'] : false;
+        $sep_icon_pos = isset($settings['sep_icon_pos']) ? $settings['sep_icon_pos'] : '';
+        $subheading = isset($settings['subheading']) ? $settings['subheading'] : '';
+        $subheading_pos = isset($settings['subheading_pos']) ? $settings['subheading_pos'] : '';
+        $show_sep = isset($settings['show_sep']) ? $settings['show_sep'] : false;
         ?>
         <div class="eb-elementor-widget">
             <div class="eb-heading">
                 <div class="eb-heading-content">
-                    <?php if( $settings['show_sep_icon'] && $settings['sep_icon_pos'] === 'above_all' ) : ?>
+                    <?php if ($show_sep_icon && $sep_icon_pos === 'above_all') : ?>
                         <div class="eb-heading-sep-icon-wrapper eb-heading-sep-icon-wrapper-top">
-                            <?php \Elementor\Icons_Manager::render_icon( $settings['sep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                            <?php \Elementor\Icons_Manager::render_icon($settings['sep_icon'], ['aria-hidden' => 'true']); ?>
                         </div>
                     <?php endif; ?>
 
-                    <?php if( $settings['subheading'] && $settings['subheading_pos'] === 'yes' ) : ?>
+                    <?php if ($subheading && $subheading_pos === 'yes') : ?>
                         <div class="eb-heading-subheading">
-                            <?php echo wp_kses_post( $settings['subheading'] ); ?>
+                            <?php echo wp_kses_post($subheading); ?>
                         </div>
                     <?php endif; ?>
 
-                    <<?php echo esc_attr( $h_tag ); ?> class="eb-heading-heading">
-                        <?php echo wp_kses_post( $heading ); ?>
-                    </<?php echo esc_attr( $h_tag ); ?>>
+                    <<?php echo esc_attr($h_tag); ?> class="eb-heading-heading">
+                        <?php echo wp_kses_post($heading); ?>
+                    </<?php echo esc_attr($h_tag); ?>>
 
-                    <?php if( $settings['subheading'] && $settings['subheading_pos'] !== 'yes' ) : ?>
+                    <?php if ($subheading && $subheading_pos !== 'yes') : ?>
                         <div class="eb-heading-subheading">
-                            <?php echo wp_kses_post( $settings['subheading'] ); ?>
+                            <?php echo wp_kses_post($subheading); ?>
                         </div>
                     <?php endif; ?>
 
-                    <?php if( $settings['show_sep_icon'] && $settings['sep_icon_pos'] === 'above_sep_line' ) : ?>
+                    <?php if ($show_sep_icon && $sep_icon_pos === 'above_sep_line') : ?>
                         <div class="eb-heading-sep-icon-wrapper eb-heading-sep-icon-wrapper-below_sep_line">
-                            <?php \Elementor\Icons_Manager::render_icon( $settings['sep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                            <?php \Elementor\Icons_Manager::render_icon($settings['sep_icon'], ['aria-hidden' => 'true']); ?>
                         </div>
                     <?php endif; ?>
 
-                    <?php if( $settings['show_sep'] ) : ?>
+                    <?php if ($show_sep) : ?>
                         <div class="eb-heading-sep">
                             <span></span>
                         </div>
                     <?php endif; ?>
 
-                    <?php if( $settings['show_sep_icon'] && $settings['sep_icon_pos'] === 'below_all' ) : ?>
+                    <?php if ($show_sep_icon && $sep_icon_pos === 'below_all') : ?>
                         <div class="eb-heading-sep-icon-wrapper eb-heading-sep-icon-wrapper-below_sep_line">
-                            <?php \Elementor\Icons_Manager::render_icon( $settings['sep_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+                            <?php \Elementor\Icons_Manager::render_icon($settings['sep_icon'], ['aria-hidden' => 'true']); ?>
                         </div>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
         <?php
-
     }
 }
