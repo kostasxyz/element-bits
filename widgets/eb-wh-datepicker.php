@@ -12,6 +12,9 @@ defined( 'ABSPATH' ) || exit;
  * @version 1.1
  * @todo refactor pickadate.js with flatpicker.js
  */
+use \Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use \Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 class EB_WH_Datepicker extends EB_Widget_Base {
 
     /**
@@ -190,9 +193,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Border color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#ddd',
                 'selectors' => [
@@ -228,9 +230,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Label Color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -244,7 +245,9 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'name' => 'label_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-datepicker-field-label',
 			]
 		);
@@ -266,9 +269,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Date Color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -282,7 +284,9 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'name' => 'date_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-datepicker-field-display-typo'
 			]
         );
@@ -321,9 +325,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Icon Color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#999',
 			]
@@ -359,9 +362,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Text', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#eee',
                 'selectors' => [
@@ -375,9 +377,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Text hover', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#eee',
                 'selectors' => [
@@ -391,9 +392,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Background', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -407,9 +407,8 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'label' => __( 'Background hover', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -423,7 +422,9 @@ class EB_WH_Datepicker extends EB_Widget_Base {
 			[
 				'name' => 'button_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-datepicker-field-book-btn a'
 			]
 		);

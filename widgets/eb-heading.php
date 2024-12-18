@@ -1,6 +1,8 @@
 <?php
 namespace ElementBits\Widgets;
 
+use \Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -131,9 +133,8 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'label' => __( 'Heading Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-heading-heading' => 'color: {{VALUE}}',
@@ -147,7 +148,9 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'name' => 'heading_typo',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-heading-heading',
             ]
         );
@@ -228,9 +231,8 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'label' => __( 'Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-heading-heading-part' => 'color: {{VALUE}}',
@@ -243,7 +245,9 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'name' => 'heading_words_typo',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-heading-heading-part',
             ]
         );
@@ -275,9 +279,8 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'label' => __( 'SubHeading Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-heading-subheading' => 'color: {{VALUE}}',
@@ -312,7 +315,9 @@ class EB_Heading extends EB_Widget_Base {
                 'name' => 'subheading_typo',
                 'type' => 'text_shadow',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-heading-subheading',
             ]
         );
@@ -393,9 +398,8 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'label' => __( 'Separator Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#222',
                 'selectors' => [
@@ -503,9 +507,8 @@ class EB_Heading extends EB_Widget_Base {
             [
                 'label' => __( 'Icon Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#222',
                 'selectors' => [

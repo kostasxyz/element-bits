@@ -1,6 +1,8 @@
 <?php
 namespace ElementBits\Widgets;
 
+use \Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -147,9 +149,8 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
             [
                 'label' => __( 'Burger Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#444',
                 'selectors' => [
@@ -163,9 +164,8 @@ class EB_Menu_Icon_Button extends EB_Widget_Base {
             [
                 'label' => __( 'Burger Color (close)', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#444',
                 'selectors' => [

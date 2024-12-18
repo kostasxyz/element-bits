@@ -1,6 +1,8 @@
 <?php
 namespace ElementBits\Widgets;
 
+use \Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -80,9 +82,8 @@ class EB_Vertical_Sep extends EB_Widget_Base {
             [
                 'label' => __( 'Sep Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-vertical-sep-wrapper .eb-vertical-sep' => 'background-color: {{VALUE}}',

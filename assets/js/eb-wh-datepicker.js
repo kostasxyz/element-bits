@@ -1,137 +1,166 @@
-;(function($){
-  var ebDatepickerWidget = function( $scope, $ ) {
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    var wrapper            = $scope.find('.eb-datepicker-wrapper');
-    var dataProps          = wrapper.data('elbits');
-    var checkinField       = wrapper.find('.eb-datepicker-field-checkin');
-    var checkoutField      = wrapper.find('.eb-datepicker-field-checkout');
-    var checkinDisplay     = checkinField.find('.eb-datepicker-field-display');
-    var checkoutDisplay    = checkoutField.find('.eb-datepicker-field-display');
-    var bookBtn            = wrapper.find('.eb-datepicker-book-btn');
-    var addGuest           = wrapper.find('.eb-number-field-add');
-    var subGuest           = wrapper.find('.eb-number-field-sub');
-    var guestNum           = wrapper.find('.eb-number-field-num');
-    var guests             = dataProps.def_guests ?? 2;
+;(function($) {
+  var ebDatepickerWidget = function($scope, $) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const wrapper = $scope.find('.eb-datepicker-wrapper');
 
-    var bookUrl = dataProps.book_url ?? 'https://myhotel.reserve-online.net';
+    // Validate required elements
+    if (!wrapper.length) {
+      console.error('Datepicker wrapper not found');
+      return;
+    }
 
+    const dataProps = wrapper.data('elbits') || {};
+    const {
+      book_url = 'https://myhotel.reserve-online.net',
+      def_guests = 2,
+      max_guests = 6
+    } = dataProps;
 
-    var checkinPicker = checkinField.flatpickr({
+    // Cache DOM elements
+    const elements = {
+      checkinField: wrapper.find('.eb-datepicker-field-checkin'),
+      checkoutField: wrapper.find('.eb-datepicker-field-checkout'),
+      checkinDisplay: wrapper.find('.eb-datepicker-field-checkin .eb-datepicker-field-display'),
+      checkoutDisplay: wrapper.find('.eb-datepicker-field-checkout .eb-datepicker-field-display'),
+      bookBtn: wrapper.find('.eb-datepicker-book-btn'),
+      addGuest: wrapper.find('.eb-number-field-add'),
+      subGuest: wrapper.find('.eb-number-field-sub'),
+      guestNum: wrapper.find('.eb-number-field-num')
+    };
+
+    let guests = def_guests;
+
+    // Helper Functions
+    const leadingZero = num => num < 10 ? `0${num}` : `${num}`;
+
+    const getDate = (dateObj, offset = 0) => {
+      try {
+        const date = dateObj ? new Date(dateObj) : new Date();
+        
+        if (isNaN(date.getTime())) {
+          throw new Error('Invalid date provided');
+        }
+
+        if (offset) {
+          date.setDate(date.getDate() + offset);
+        }
+
+        return {
+          year: date.getFullYear(),
+          month: months[date.getMonth()],
+          day: leadingZero(date.getDate()),
+          qstr: `${leadingZero(date.getDate())}-${leadingZero(date.getMonth() + 1)}-${date.getFullYear()}`,
+          date: date
+        };
+      } catch (error) {
+        console.error('Date parsing error:', error);
+        // Return current date as fallback
+        return getDate(new Date());
+      }
+    };
+
+    const displayDate = (dateObj, offset = 0) => {
+      const data = getDate(dateObj, offset);
+      return data ? `${data.day} ${data.month}` : '';
+    };
+
+    const buildBookUrl = () => {
+      try {
+        const checkin = `?checkin=${getDate(checkinPicker.selectedDates).qstr}`;
+        const checkout = `&checkout=${getDate(checkoutPicker.selectedDates).qstr}`;
+        const guestsVal = `&adults=${guests}`;
+        return `${book_url}${checkin}${checkout}${guestsVal}`;
+      } catch (error) {
+        console.error('Error building booking URL:', error);
+        return book_url;
+      }
+    };
+
+    const checkoutGreaterThanCheckin = () => {
+      try {
+        const checkin = new Date(checkinPicker.selectedDates);
+        const checkout = new Date(checkoutPicker.selectedDates);
+
+        checkin.setHours(0, 0, 0, 0);
+        checkout.setHours(0, 0, 0, 0);
+
+        return checkout > checkin;
+      } catch (error) {
+        console.error('Error comparing dates:', error);
+        return false;
+      }
+    };
+
+    const handleDateChange = (field = 'in', selectedDates, instance) => {
+      try {
+        const dates = getDate(selectedDates[0]);
+        if (!dates) return;
+
+        instance.setDate(dates.date);
+
+        if (field === 'in') {
+          elements.checkinDisplay.text(displayDate(dates.date));
+          if (!checkoutGreaterThanCheckin()) {
+            elements.checkoutDisplay.text(displayDate(dates.date, 2));
+            checkoutPicker.setDate(getDate(dates.date, 2).date);
+          }
+        } else {
+          elements.checkoutDisplay.text(displayDate(dates.date));
+          if (!checkoutGreaterThanCheckin()) {
+            elements.checkinDisplay.text(displayDate(dates.date, -2));
+            checkinPicker.setDate(getDate(dates.date, -2).date);
+          }
+        }
+
+        elements.bookBtn.attr('href', buildBookUrl());
+      } catch (error) {
+        console.error('Error handling date change:', error);
+      }
+    };
+
+    // Initialize Flatpickr
+    const checkinPicker = elements.checkinField.flatpickr({
       altFormat: "F j, Y",
       dateFormat: "d-m-Y",
       defaultDate: Date.now(),
-      onChange: function(selectedDates, dateStr, instance) {
-        handleDateChange('in', selectedDates, instance);
-      }
+      onChange: (selectedDates, dateStr, instance) => handleDateChange('in', selectedDates, instance)
     });
 
-    var checkoutPicker = checkoutField.flatpickr({
+    const checkoutPicker = elements.checkoutField.flatpickr({
       altFormat: "Y-m-d",
       dateFormat: "Y-m-d",
-      defaultDate: new Date(Date.now() + ((2 * 24) * 3600 * 1000)),
-      onChange: function(selectedDates, dateStr, instance) {
-        handleDateChange('out', selectedDates, instance);
-      }
+      defaultDate: new Date(Date.now() + (2 * 24 * 3600 * 1000)),
+      onChange: (selectedDates, dateStr, instance) => handleDateChange('out', selectedDates, instance)
     });
 
-    function buildBookUrl() {
-
-      var checkin = '?checkin=' + getDate(checkinPicker.selectedDates).qstr;
-
-      var checkout = '&checkout=' + getDate(checkoutPicker.selectedDates).qstr;
-
-      var guestsVal = '&adults=' + guests;
-
-      return bookUrl + checkin + checkout + guestsVal;
-    }
-
-    // Make an object with needed structure
-    function getDate(dateObj, offset) {
-
-      var date = new Date(dateObj) || Date.now();
-
-      if(offset) {
-        date.setDate(dateObj.getDate() + offset);
-      }
-
-      return {
-        year: date.getFullYear(),
-        month: months[date.getMonth()],
-        day: leadingZero(date.getDate()),
-        qstr: leadingZero(date.getDate()) + '-' + leadingZero(date.getMonth()+1) + '-' + date.getFullYear(),
-        date: date
-      }
-    }
-
-    // Add 0 to 1 digit vals
-    function leadingZero(num) {
-      return num < 10 ? '0' + num : '' + num;
-    }
-
-    function displayDate(dateObj, offset) {
-      offset = offset || 0;
-      var data = getDate(dateObj, offset);
-      return data.day + ' ' + data.month;
-    }
-
-    function checkoutGreaterThanCheckin() {
-      var checkin = new Date(checkinPicker.selectedDates);
-      var checkout = new Date(checkoutPicker.selectedDates);
-
-      checkin.setHours(0,0,0,0);
-      checkout.setHours(0,0,0,0);
-
-      return checkout > checkin;
-    }
-
-    function handleDateChange(field, selectedDates, instance) {
-      field = field || 'in';
-
-      var dates = getDate(selectedDates[0]);
-
-      instance.setDate(dates.date);
-
-      if(field === 'in') {
-        checkinDisplay.text(displayDate(dates.date));
-        if(!checkoutGreaterThanCheckin()) {
-          checkoutDisplay.text(displayDate(dates.date, 2));
-          checkoutPicker.setDate(getDate(dates.date, 2).date);
-        }
-      }
-      else {
-        checkoutDisplay.text(displayDate(dates.date));
-        if(!checkoutGreaterThanCheckin()) {
-          checkinDisplay.text(displayDate(dates.date, -2));
-          checkinPicker.setDate(getDate(dates.date, -2).date);
-        }
-      }
-
-      bookBtn.attr('href', buildBookUrl());
-    }
-
-
-    addGuest.on('click', function(ev) {
-      if(guests < dataProps.max_guests ?? 6) {
+    // Event Handlers
+    elements.addGuest.on('click', () => {
+      if (guests < max_guests) {
         guests += 1;
-        guestNum.text(guests);
+        elements.guestNum.text(guests);
+        elements.bookBtn.attr('href', buildBookUrl());
       }
-
-      bookBtn.attr('href', buildBookUrl());
     });
 
-    subGuest.on('click', function(){
-      if(guests > 1) {
-          guests -= 1;
-          guestNum.text(guests);
+    elements.subGuest.on('click', () => {
+      if (guests > 1) {
+        guests -= 1;
+        elements.guestNum.text(guests);
+        elements.bookBtn.attr('href', buildBookUrl());
       }
-
-      bookBtn.attr('href', buildBookUrl());
     });
 
+    // Cleanup function
+    return function() {
+      if (checkinPicker) checkinPicker.destroy();
+      if (checkoutPicker) checkoutPicker.destroy();
+      elements.addGuest.off('click');
+      elements.subGuest.off('click');
+    };
   };
 
-    // Make sure you run this code under Elementor.
-  $(window).on( 'elementor/frontend/init', function() {
-    elementorFrontend.hooks.addAction( 'frontend/element_ready/eb-wh-datepicker.default', ebDatepickerWidget );
-  } );
+  // Initialize widget
+  $(window).on('elementor/frontend/init', function() {
+    elementorFrontend.hooks.addAction('frontend/element_ready/eb-wh-datepicker.default', ebDatepickerWidget);
+  });
 })(jQuery);

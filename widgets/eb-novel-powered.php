@@ -1,6 +1,9 @@
 <?php
 namespace ElementBits\Widgets;
 
+use \Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use \Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -86,9 +89,8 @@ class Novel_Powered extends EB_Widget_Base {
             [
                 'label' => __( 'Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-novelp-text' => 'color: {{VALUE}}',
@@ -101,7 +103,9 @@ class Novel_Powered extends EB_Widget_Base {
             [
                 'name' => 'text_typo',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-novelp-text',
                 'fields_options' => [
                     'font_size' => [ 'default' => [ 'unit' => 'px', 'size' => 13 ] ]
@@ -140,9 +144,8 @@ class Novel_Powered extends EB_Widget_Base {
             [
                 'label' => __( 'Logo Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-novel-text-logo' => 'fill: {{VALUE}}',
@@ -249,7 +252,7 @@ class Novel_Powered extends EB_Widget_Base {
                             <polygon id="polygon4" transform="translate(-.065)" points="180.13 18.851 163.94 18.851 193.08 100.54 194.92 100.54 207.44 100.54 209.28 100.54 238.42 18.851 222.22 18.851 201.18 81.751"/>
                             <path id="path6" d="m313.98 67.026c0.408-2.4 0.631-4.868 0.631-7.394 0-22.697-17.157-41.097-38.32-41.097s-38.319 18.4-38.319 41.097 17.156 41.096 38.319 41.096c12.975 0 24.435-6.922 31.367-17.503l-12.344-6.755c-4.423 6.147-11.222 10.225-18.854 10.225-11.091 0-20.428-8.39-23.252-19.507h46.504c-3e-3 0-6e-3 -0.112-8e-3 -0.101zm-37.519-33.984c11.089 0 20.426 8.527 23.251 19.645h-46.505c2.826-11.118 12.164-19.645 23.254-19.645z"/>
                             <rect id="rect8" x="326.07" width="14.5" height="100.54"/>
-                            <path id="path14" d="m76.64 41.097c0-22.698-17.157-41.097-38.319-41.097-21.164 0-38.321 18.399-38.321 41.097 0 0.121 7e-3 0.24 8e-3 0.36h-8e-3v59.001h14.361v-59.001c0-0.086-6e-3 -0.17-6e-3 -0.257 0-14.813 10.805-26.822 24.134-26.822 13.327 0 24.132 12.009 24.132 26.822 0 0.086-5e-3 0.171-5e-3 0.257v59.001h14.023v-59.001h-8e-3c2e-3 -0.121 9e-3 -0.24 9e-3 -0.36z"/>
+                            <path id="path14" d="m76.64 41.097c0-22.698-17.157-41.097-38.319-41.097-21.164 0-38.321 18.399-38.321 41.097 0 0.121 7e-3 0.24 8e-3 0.36h-8e-3v59.001h14.361v-59.001c0-0.086-6e-3 -0.17-6e-3 -0.257 0-14.813 10.805-26.822 24.134-26.822 13.327 0 24.132 12.009 24.132 26.823 0 0.086-5e-3 0.171-5e-3 0.257v59.001h14.023v-59.001h-8e-3c2e-3 -0.121 9e-3 -0.24 9e-3 -0.36z"/>
                         </g>
                     </svg>
                 </a>

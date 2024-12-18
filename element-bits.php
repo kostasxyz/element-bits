@@ -4,7 +4,7 @@
  * Description: Extra Elementor Widgets
  * Plugin URI: https://noveldigital.pro
  * Author: Kostas Charalampidis
- * Version: 1.1
+ * Version: 1.2
  * Author URI: https://noveldigital.pro
  *
  * Text Domain: element-bits
@@ -33,7 +33,7 @@ add_action( 'plugins_loaded', 'elbits_init' );
  */
 function elbits_init() {
     // Plugin paths/uri
-    define( 'ELBITS_VERSION', '1.0.4' );
+    define( 'ELBITS_VERSION', '1.2' );
     define( 'ELBITS_URL', plugins_url( '/', __FILE__ ) );
     define( 'ELBITS_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -44,8 +44,20 @@ function elbits_init() {
             $html      = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
             echo wp_kses_post( $html );
         } );
-
 		return;
+    }
+
+    // Check Elementor version
+    if ( ! version_compare( ELEMENTOR_VERSION, '3.5.0', '>=' ) ) {
+        add_action( 'admin_notices', function() {
+            $message = sprintf(
+                esc_html__( 'Element Bits requires Elementor version %s or greater. Please update Elementor to continue.', 'element-bits' ),
+                '3.5.0'
+            );
+            $html = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
+            echo wp_kses_post( $html );
+        } );
+        return;
     }
 
     // PHP version check
@@ -130,34 +142,79 @@ function elbits_init() {
     } );
 
     // Front end scripts/styles
-    add_action( 'wp_enqueue_scripts', function() use ( $settings ) {
-		wp_enqueue_style( 'element-bits', ELBITS_URL . 'assets/css/element-bits.css', [], ELBITS_VERSION );
-        wp_enqueue_script( 'element-bits', ELBITS_URL . 'assets/js/element-bits.js', [ 'jquery' ], ELBITS_VERSION, true );
+    add_action('wp_enqueue_scripts', function() use ($settings) {
+        // Core styles
+        wp_enqueue_style('element-bits', ELBITS_URL . 'assets/css/element-bits.css', [], ELBITS_VERSION);
 
-        wp_register_script( 'eb-accordion-menu', ELBITS_URL . 'assets/js/eb-accordion-menu.js', ['element-bits'], ELBITS_VERSION);
+        // Third party dependencies
+        wp_register_style('flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css', [], ELBITS_VERSION);
+        wp_register_script('flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr', [], ELBITS_VERSION, true);
 
-        wp_register_script( 'eb-weather', ELBITS_URL . 'assets/js/eb-weather.js', ['element-bits'], ELBITS_VERSION);
-        wp_register_style( 'weather-icons', ELBITS_URL . 'assets/css/weather-icons.css', [ 'element-bits' ], ELBITS_VERSION );
+        // Widget specific styles
+        wp_register_style('weather-icons', ELBITS_URL . 'assets/css/weather-icons.css', ['element-bits'], ELBITS_VERSION);
+        wp_register_style('eb-menu-icon-button', ELBITS_URL . 'assets/css/eb-menu-icon-button.css', ['element-bits'], ELBITS_VERSION);
 
-        wp_register_script( 'eb-wpml-lang-switch', ELBITS_URL . 'assets/js/eb-wpml-lang-switch.js', ['element-bits'], ELBITS_VERSION);
+        // Core script - load after Elementor
+        wp_enqueue_script('element-bits', ELBITS_URL . 'assets/js/element-bits.js', ['jquery', 'elementor-frontend'], ELBITS_VERSION, true);
 
-        wp_register_style( 'eb-menu-icon-button', ELBITS_URL . 'assets/css/eb-menu-icon-button.css', [ 'element-bits' ], ELBITS_VERSION );
+        // Localize script
+        wp_localize_script('element-bits', 'ebits', [
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('element-bits-nonce'),
+            'pluginUrl' => ELBITS_URL
+        ]);
 
-        wp_register_style( 'flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css', [], ELBITS_VERSION );
-        // wp_register_style( 'flatpickr-theme', 'https://npmcdn.com/flatpickr/dist/themes/airbnb.css', ['flatpickr'], ELBITS_VERSION );
-        wp_register_script( 'flatpickr', 'https://cdn.jsdelivr.net/npm/flatpickr', [], ELBITS_VERSION, true );
+        // Register widget scripts
+        $widget_scripts = [
+            'eb-accordion-menu' => ['jquery', 'element-bits'],
+            'eb-wh-datepicker' => ['jquery', 'flatpickr', 'element-bits'],
+            'eb-wpml-lang-switch' => ['jquery', 'element-bits'],
+            'eb-google-map' => ['jquery', 'element-bits'],
+            'eb-weather' => ['jquery', 'element-bits']
+        ];
 
-        wp_register_script( 'eb-wh-datepicker', ELBITS_URL . 'assets/js/eb-wh-datepicker.js', [ 'jquery', 'flatpickr' ], ELBITS_VERSION, true );
-
-        wp_enqueue_script( 'eb-google-map', ELBITS_URL . 'assets/js/eb-google-map.js', [ 'element-bits' ], ELBITS_VERSION, true );
-
-        // wp_register_style( 'leaflet', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css', [ 'element-bits' ], null );
-        // wp_register_script( 'leaflet', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js', [ 'element-bits' ], null, true );
-
-        if( $gmap_api_key = $settings->options( 'gmap_key' ) ) {
-            wp_enqueue_script( 'googleapis-maps', 'https://maps.googleapis.com/maps/api/js?key=' . esc_attr( $gmap_api_key ), [], null, false );
+        foreach ($widget_scripts as $handle => $deps) {
+            wp_register_script(
+                $handle,
+                ELBITS_URL . "assets/js/{$handle}.js",
+                $deps,
+                ELBITS_VERSION,
+                true
+            );
         }
-    } );
+
+        // Google Maps API (if key exists)
+        if ($gmap_api_key = $settings->options('gmap_key')) {
+            wp_enqueue_script('googleapis-maps',
+                'https://maps.googleapis.com/maps/api/js?key=' . esc_attr($gmap_api_key),
+                [],
+                null,
+                true
+            );
+        }
+    }, 20);
+
+    // Handle AJAX requests
+    add_action('wp_ajax_eb_ajax_request', function() {
+        check_ajax_referer('element-bits-nonce', 'nonce');
+
+        $action = isset($_POST['eb_action']) ? sanitize_text_field($_POST['eb_action']) : '';
+        $response = ['success' => false];
+
+        switch ($action) {
+            case 'weather_data':
+                // Handle weather data request
+                break;
+            // Add other cases as needed
+        }
+
+        wp_send_json($response);
+    });
+
+    add_action('wp_ajax_nopriv_eb_ajax_request', function() {
+        check_ajax_referer('element-bits-nonce', 'nonce');
+        wp_send_json(['success' => false, 'message' => 'Login required']);
+    });
 
     // Preview styles
     add_action( 'elementor/editor/before_enqueue_scripts', function() {

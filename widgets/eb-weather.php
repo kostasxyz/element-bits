@@ -11,6 +11,9 @@ defined( 'ABSPATH' ) || exit;
  * @since 1.0
  * @version 1.1
  */
+use \Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use \Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 class EB_Weather extends EB_Widget_Base {
 
     /**
@@ -128,9 +131,8 @@ class EB_Weather extends EB_Widget_Base {
             [
                 'label' => __( 'Icon Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-weather-icon' => 'color: {{VALUE}}',
@@ -186,9 +188,8 @@ class EB_Weather extends EB_Widget_Base {
             [
                 'label' => __( 'Text Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-weather-temp' => 'color: {{VALUE}}',
@@ -201,7 +202,9 @@ class EB_Weather extends EB_Widget_Base {
             [
                 'name' => 'temp_typography',
                 'label' => __( 'Text Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-weather-temp',
             ]
         );

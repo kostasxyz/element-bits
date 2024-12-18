@@ -3,7 +3,6 @@ namespace ElementBits\Widgets;
 
 defined( 'ABSPATH' ) || exit;
 
-
 /**
  * Element bits widget Template.
  *
@@ -305,9 +304,8 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             [
                 'label' => __( 'Icon Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#111',
                 'selectors' => [
@@ -416,9 +414,8 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             [
                 'label' => __( 'Text Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#111',
                 'selectors' => [
@@ -439,7 +436,9 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             [
                 'name' => 'text_typo',
                 'label' => __( 'Text Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-text',
             ]
         );
@@ -461,9 +460,8 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             [
                 'label' => __( 'Subtext Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'default' => '#111',
                 'selectors' => [
@@ -484,7 +482,9 @@ class ACF_Repeater_List_Widget extends EB_Widget_Base {
             [
                 'name' => 'subtext_typo',
                 'label' => __( 'Subtext Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-acf-repeater-list-widget-subtext',
             ]
         );

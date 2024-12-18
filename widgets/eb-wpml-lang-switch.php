@@ -12,6 +12,8 @@ defined( 'ABSPATH' ) || exit;
  * @since 1.0
  * @version 1.1
  */
+use \Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 class EB_Wpml_Lang_Switch extends EB_Widget_Base {
 
     /**
@@ -162,7 +164,9 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'name' => 'handle_typo',
                 'label' => __( 'Handle Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-lang-switch-handle',
             ]
         );
@@ -172,10 +176,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'label' => __( 'Handle Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#222',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-lang-switch-handle' => 'color: {{VALUE}}',
@@ -211,10 +213,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'label' => __( 'Overlay Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => 'rgba(0,0,0,0.6)',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-modal-overlay' => 'background: {{VALUE}}',
@@ -236,10 +236,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'label' => __( 'Modal BG Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-modal' => 'background-color: {{VALUE}}',
@@ -273,10 +271,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'label' => __( 'Modal Close btn Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
             ]
         );
@@ -286,7 +282,9 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'name' => 'lang_list_typo',
                 'label' => __( 'Lang List Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-lang-switch-lang-item',
             ]
         );
@@ -335,7 +333,7 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
         //         'default' => '#f7f7f7',
         //         'scheme' => [
         //             'type' => \Elementor\Core\Schemes\Color::get_type(),
-        //             'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+        //             'value' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
         //         ],
         //         'selectors' => [
         //             '{{WRAPPER}} .eb-lang-switch-lang-item:hover' => 'background: {{VALUE}}',
@@ -348,10 +346,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'label' => __( 'Language List Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-lang-switch-lang-item' => 'color: {{VALUE}}',
@@ -364,10 +360,8 @@ class EB_Wpml_Lang_Switch extends EB_Widget_Base {
             [
                 'label' => __( 'Language List Hover Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-lang-switch-lang-link:hover' => 'color: {{VALUE}}',

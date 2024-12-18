@@ -325,7 +325,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'name' => 'h_typography',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
                 'selector' => '{{WRAPPER}} .ntr-whapi-offer-title',
             ]
         );
@@ -335,9 +335,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'label' => __( 'Title Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-title a' => 'color: {{VALUE}}',
@@ -350,9 +349,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'label' => __( 'Title Color Hover', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-title:hover a' => 'color: {{VALUE}}',
@@ -381,7 +379,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'meta_typography',
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
+                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
                 'selector' => '{{WRAPPER}} .eb-whoffers-meta-labels',
             ]
         );
@@ -391,9 +389,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'label' => __( 'Info labels Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eb-whoffers-meta-labels' => 'color: {{VALUE}}',
@@ -422,7 +419,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'price_typography',
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
+                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
                 'selector' => '{{WRAPPER}} .ntr-whapi-offer-price',
             ]
         );
@@ -432,9 +429,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'label' => __( 'Price Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-price' => 'color: {{VALUE}}',
@@ -463,7 +459,7 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'typography',
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
+                'scheme' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_ACCENT,
                 'selector' => '{{WRAPPER}} .ntr-whapi-offer-book-btn',
             ]
         );
@@ -490,7 +486,9 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'label' => __( 'Text Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '',
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-book-btn' => 'fill: {{VALUE}}; color: {{VALUE}};',
                 ],
@@ -502,9 +500,8 @@ class EB_Whapi_Offers extends EB_Widget_Base {
             [
                 'label' => __( 'Background Color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_4,
+                'global' => [
+                    'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_ACCENT,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ntr-whapi-offer-book-btn' => 'background-color: {{VALUE}};',

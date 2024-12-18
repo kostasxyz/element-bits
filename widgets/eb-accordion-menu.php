@@ -11,6 +11,9 @@ defined( 'ABSPATH' ) || exit;
  * @since 1.0
  * @version 1.1
  */
+use \Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use \Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+
 class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 
     /**
@@ -125,9 +128,8 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 				'label' => __( 'Link color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,1)',
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link' => 'color: {{VALUE}}',
@@ -141,9 +143,8 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 				'label' => __( 'Link hover color', 'element-bits' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,1)',
-				'scheme' => [
-					'type' => \Elementor\Core\Schemes\Color::get_type(),
-					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:hover' => 'color: {{VALUE}}',
@@ -157,10 +158,9 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
                 'label' => __( 'Link BG hover color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,0)',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-                ],
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
                 'selectors' => [
                     '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link:hover' => 'background-color: {{VALUE}}',
                 ],
@@ -172,7 +172,9 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
 			[
 				'name' => 'link_typography',
 				'label' => __( 'Typography', 'element-bits' ),
-				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
 				'selector' => '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-link',
 			]
         );
@@ -213,10 +215,9 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
                 'label' => __( 'Link color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,1)',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-                ],
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
                 'selectors' => [
                     '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item' => 'color: {{VALUE}}',
                 ],
@@ -229,10 +230,9 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
                 'label' => __( 'Link hover color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,1)',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-                ],
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
                 'selectors' => [
                     '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item:hover' => 'color: {{VALUE}}',
                 ],
@@ -245,10 +245,9 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
                 'label' => __( 'Link BG hover color', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => 'rgba(0,0,0,0)',
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-                ],
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
                 'selectors' => [
                     '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item:hover' => 'background-color: {{VALUE}}',
                 ],
@@ -260,7 +259,9 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
             [
                 'name' => 'subm_link_typography',
                 'label' => __( 'Typography', 'element-bits' ),
-                'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
                 'selector' => '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-sub-item',
             ]
         );
@@ -282,10 +283,9 @@ class EB_Accordion_Wp_Menu extends EB_Widget_Base {
             [
                 'label' => __( 'Submenu background', 'element-bits' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => \Elementor\Core\Schemes\Color::get_type(),
-                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
-                ],
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
                 'default' => 'rgba(0,0,0,0)',
                 'selectors' => [
                     '{{WRAPPER}} .eb-accordion-wp-menu-list .ntr-nav-menu--dropdown' => 'background-color: {{VALUE}}',
